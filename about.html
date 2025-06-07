@@ -11,163 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Additional styles for resume section */
-        .resume-container {
-            padding: 20px;
-            margin-left: 250px;
-            max-width: 1200px;
-        }
-        
-        .resume-section {
-            margin-bottom: 40px;
-        }
-        
-        .resume-section h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .resume-card {
-            background-color: #f8f8f8;
-            border-left: 4px solid #007bff;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .resume-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .resume-card h3 {
-            margin-top: 0;
-            font-weight: 600;
-            color: #333;
-            font-size: 18px;
-        }
-        
-        .resume-card .subtitle {
-            color: #007bff;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .resume-card .date {
-            float: right;
-            background-color: #f0f0f0;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-        .skill-badge {
-            display: inline-block;
-            background: #e9ecef;
-            padding: 5px 10px;
-            margin: 5px;
-            border-radius: 15px;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-        
-        .skill-badge:hover {
-            background: #007bff;
-            color: white;
-        }
-        
-        .tab-button {
-            background: none;
-            border: none;
-            padding: 10px 15px;
-            margin-right: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s ease;
-        }
-        
-        .tab-button.active {
-            border-bottom: 3px solid #007bff;
-            font-weight: 600;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.6s;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .progress-bar-container {
-            height: 8px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(to right, #007bff, #00bfff);
-        }
-        
-        .bio-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .bio-image {
-            flex: 0 0 200px;
-        }
-        
-        .bio-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @media (max-width: 768px) {
-            .resume-container {
-                margin-left: 0;
-                padding: 15px;
-            }
-            
-            .bio-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .bio-image img {
-                max-width: 150px;
-                margin: 0 auto;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <img src="logo.png" id="logo" alt="E Logo">
+            <img src="logo.png" id="logo" alt="E Logo" class="logo-animation">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="hover-underline-animation" href="index.html">Gallery</a>
@@ -177,17 +27,17 @@
                 </li>
             </ul>
             <div class="icons-container">
-                <a href="mailto:ecsampson@wm.edu">
+                <a href="mailto:ecsampson03@gmail.com" class="email-link">
                     <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i>
                 </a>
-                <a href="mailto:ecsampson@wm.edu">[  ecsampson@wm.edu  ]</a>
+                <a href="mailto:ecsampson03@gmail.com" class="email-text">[  ecsampson03@gmail.com  ]</a>
                 <br>
-                <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
                     <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
                         <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/emmanuel-sampson/">linkedin.com/in/emmanuel-sampson</a>
+                <a href="https://www.linkedin.com/in/emmanuel-sampson/" class="linkedin-text">linkedin.com/in/emmanuel-sampson</a>
             </div>
             <footer class="footer">  
                 <a href="#">©Emmanuel Sampson 2025. All Rights Reserved.</a>
@@ -196,155 +46,711 @@
     </nav>
 
     <div class="resume-container">
-        <div class="bio-container">
-            <div class="bio-image">
-                <img src="eman.png" class="img-responsive" alt="Emmanuel Sampson">
-            </div>
-            <div class="bio-text">
-                <h1>Emmanuel Sampson</h1>
-                <p>I'm a physics and philosophy double major at William & Mary, with a keen interest in technical ethics and the advancement of the world at large.</p>
-                <p>I have been a writer and photographer for years since I started working for a film production company in high school. From there, I have only improved my abilities in both crafts. Outside of school, I run a digital media and arts outsourcing company providing services to people looking to develop their creative projects.</p>
-                <p>The future is never certain, but we must strive for the best possibilities we envision. I hope to one day work on greater experiments and projects to bring forth a world beyond science fiction. Each step forward, as well as the expressions of my life, makes me whole.</p>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
-            <button class="tab-button active" onclick="openTab(event, 'education')">Education</button>
-            <button class="tab-button" onclick="openTab(event, 'experience')">Experience</button>
-            <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
-            <button class="tab-button" onclick="openTab(event, 'volunteer')">Volunteer</button>
-            <button class="tab-button" onclick="openTab(event, 'skills')">Skills</button>
-        </div>
-
-        <div id="education" class="tab-content active">
-            <div class="resume-section">
-                <h2>Education</h2>
-                <div class="resume-card">
-                    <span class="date">Expected 2026</span>
-                    <h3>William & Mary</h3>
-                    <div class="subtitle">B.S. in Physics</div>
-                    <p>Concentration in Engineering Physics and Applied Design</p>
+        <!-- Hero Section -->
+        <div class="hero-section fade-in">
+            <div class="bio-container">
+                <div class="bio-image">
+                    <img src="eman.png" class="img-responsive profile-img" alt="Emmanuel Sampson">
+                </div>
+                <div class="bio-text">
+                    <h1 class="hero-title">Emmanuel Sampson</h1>
+                    <p class="hero-subtitle">Physics & Philsophy Student | Creative Professional</p>
+                    <p class="hero-description"></p>
+                    <div class="hero-skills">
+                        <span class="skill-badge">Physics Research</span>
+                        <span class="skill-badge">Engineering Design</span>
+                        <span class="skill-badge">Photography</span>
+                        <span class="skill-badge">Leadership</span>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Tab Navigation -->
+        <div class="tab-navigation slide-in">
+            <button class="tab-button active" onclick="openTab(event, 'overview')">Overview</button>
+            <button class="tab-button" onclick="openTab(event, 'education')">Education</button>
+            <button class="tab-button" onclick="openTab(event, 'experience')">Experience</button>
+            <button class="tab-button" onclick="openTab(event, 'research')">Projects</button>
+            <button class="tab-button" onclick="openTab(event, 'achievements')">Achievements</button>
+            <button class="tab-button" onclick="openTab(event, 'skills')">Skills</button>
+            <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="overview-grid">
+                <div class="overview-card card-animation">
+                    <div class="card-icon"><i class="fa fa-lightbulb-o"></i></div>
+                    <h3>Research</h3>
+                    <p>Conducted research in optics, and atomistic spin dynamics modeling for next-generation semiconductors.</p>
+                </div>
+                <div class="overview-card card-animation">
+                    <div class="card-icon"><i class="fa fa-users"></i></div>
+                    <h3>Leadership</h3>
+                    <p>President of multiple organizations including Robotics Club, Data Science Society, Tech Executive Association, and Photo Club.</p>
+                </div>
+                <div class="overview-card card-animation">
+                    <div class="card-icon"><i class="fa fa-trophy"></i></div>
+                    <h3>Innovations</h3>
+                    <p>Created Bird Sensor, Radio-frequency Locator, and AI Defect Analyzer.</p>
+                </div>
+                <div class="overview-card card-animation">
+                    <div class="card-icon"><i class="fa fa-camera"></i></div>
+                    <h3>Creative Arts</h3>
+                    <p> Developed experience in photography, filmmaking, creative writing, and music production.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education Tab -->
+        <div id="education" class="tab-content">
+            <div class="resume-section">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-date">Expected 2026</div>
+                        <div class="timeline-content">
+                            <h3>William & Mary</h3>
+                            <div class="subtitle">B.S. in Physics | B.A. in Philosophy</div>
+                            <p>Concentration in Engineering Physics and Applied Design</p>
+                            <div class="achievements-list">
+                                <div class="achievement-item">
+                                    <i class="fa fa-star"></i> William and Mary Spirit Scholarship Recipient
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fa fa-star"></i> William and Mary Catron Scholarship Recipient
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fa fa-star"></i> William and Mary Bosanko Scholarship Recipient
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fa fa-star"></i> Sharpe Community Scholar
+                                </div>
+                                <div class="achievement-item">
+                                    <i class="fa fa-microphone"></i> 2025 Prospective Student Keynote Speaker
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-date">June - Aug 2024</div>
+                        <div class="timeline-content">
+                            <h3>UCLA School of Theater, Film & Television</h3>
+                            <div class="subtitle">Cinematography and Film/Video Production</div>
+                            <p>Intensive summer program focusing on film industry, creative producing, and storytelling craft</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-date">2018 - 2022</div>
+                        <div class="timeline-content">
+                            <h3>Colonial Heights High School</h3>
+                            <div class="subtitle">Advanced Diploma</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-date">June 2019</div>
+                        <div class="timeline-content">
+                            <h3>Additional Coursework</h3>
+                            <ul>
+                                <li>Denison University - Creative Writing</li>
+                                <li>Richard Bland Community College - Music History</li>
+                                <li>Thomas Nelson Community College - Astronomy</li>
+                                <li>John Tyler Community College - Finance and Economics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Tab -->
         <div id="experience" class="tab-content">
             <div class="resume-section">
-                <h2>Work Experience</h2>
-                <div class="resume-card">
-                    <span class="date">Oct 2023 - Present</span>
-                    <h3>Physics Research Assistant</h3>
-                    <div class="subtitle">Applied Research Center Core Labs, Williamsburg, VA</div>
-                    <ul>
-                        <li>Analyzed and organized data captured throughout experiments</li>
-                        <li>Managed budget to strategically allocate funds and enhance work efficiency</li>
-                        <li>Developed research experiments on reflective optics</li>
-                        <li>Constructed electronics for innovative data acquisitioning</li>
-                    </ul>
-                </div>
-                
-                <div class="resume-card">
-                    <span class="date">Oct 2022 - Nov 2023</span>
-                    <h3>Student Engineer</h3>
-                    <div class="subtitle">W&M Makerspace, Williamsburg, VA</div>
-                    <ul>
-                        <li>Educated students on various styles of engineering</li>
-                        <li>Developed and displayed an understanding of electrical engineering and CAD software</li>
-                        <li>Managed team responsibilities and handled electro optic equipment</li>
-                    </ul>
-                </div>
-                
-                <div class="resume-card">
-                    <span class="date">May 2023 - July 2023</span>
-                    <h3>Manufacturing Engineer Intern</h3>
-                    <div class="subtitle">Build Forward Foundation, Richmond, VA</div>
-                    <ul>
-                        <li>Maintained quality of equipment used for laser cutting, metallurgy, and wood working</li>
-                        <li>Developed motorized vehicle</li>
-                    </ul>
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="experience-grid">
+                    <div class="resume-card hover-lift">
+                        <span class="date">May 2025 - Present</span>
+                        <h3>Engineer Intern</h3>
+                        <div class="subtitle">WEINERT Fiber Optics Inc</div>
+                        <ul>
+                            <li>Design and implement AI-powered computer vision systems in Python and C++ for automated fiber-optic end-face defect detection</li>
+                            <li>Develop and optimize real-time medical temperature monitoring and logging sensors</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">June 2024 - Present</span>
+                        <h3>Creative Production Assistant</h3>
+                        <div class="subtitle">Two Beagles Studio LLC</div>
+                        <ul>
+                            <li>Write and develop intellectual property including novels, screenplays, and advertisements</li>
+                            <li>Drive brand strategy and execute impactful marketing campaigns</li>
+                            <li>Design, build, and optimize corporate website for enhanced digital presence</li>
+                            <li>Coordinate talent recruitment and support film & media project development</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resume-card hover-lift">
+                        <span class="date">Oct 2023 - Present</span>
+                        <h3>Physics Research Assistant</h3>
+                        <div class="subtitle">Applied Research Center Core Labs</div>
+                        <ul>
+                            <li>Conducted research in reflective optics and atomistic spin dynamics modeling</li>
+                            <li>Develop innovative data acquisition systems using custom electronics</li>
+                            <li>Manage research budget and coordinate experimental protocols</li>
+                            <li>Collaborate with CERN, NIST, and CALTECH on advanced projects</li>
+                            <li>Operate advanced instrumentation: Hitachi S-4700 FE-SEM, Phenom SEM, Bruker Dimension ICON AFM, HIROX KH-7700, Renishaw inVia Raman, Dektak 3 ST, and Profilm3D surface profilers</li>
+                            <li>Assembled TrIFT 4 time-of-flight mass spectrometry instrument</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resume-card hover-lift">
+                        <span class="date">Jan 2024 - Present</span>
+                        <h3>Communications Assistant</h3>
+                        <div class="subtitle">William & Mary Charles Center</div>
+                        <ul>
+                            <li>Capture high-quality imagery of researchers, advisors, donors, and events</li>
+                            <li>Develop ideas for outreach and marketing strategies</li>
+                            <li>Document diverse scope of Charles Center's programming activities</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Jan 2024 - Jan 2025</span>
+                        <h3>Marketing Communications Assistant</h3>
+                        <div class="subtitle">William & Mary</div>
+                        <ul>
+                            <li>Managed content creation for marketing initiatives</li>
+                            <li>Developed strategic communications materials</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Oct 2022 - June 2024</span>
+                        <h3>Head Media Specialist</h3>
+                        <div class="subtitle">William & Mary Human Resources</div>
+                        <ul>
+                            <li>Facilitated communication across departments and led team meetings</li>
+                            <li>Conducted interviews and managed hiring process for new employees</li>
+                            <li>Oversaw advertising and media production initiatives</li>
+                            <li>Created and maintained stock image library</li>
+                            <li>Produced instructional videos, improving training efficiency</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resume-card hover-lift">
+                        <span class="date">Oct 2022 - Nov 2023</span>
+                        <h3>Student Engineer</h3>
+                        <div class="subtitle">W&M Makerspace</div>
+                        <ul>
+                            <li>Educated students on engineering principles and CAD software</li>
+                            <li>Managed electro-optic equipment and fabrication tools</li>
+                            <li>Led team projects in mechanical and electrical engineering</li>
+                            <li>Coordinated machine usage using Jira Service Manager</li>
+                            <li>Trained students in Apex, Fusion360, Makerbot, and more</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resume-card hover-lift">
+                        <span class="date">May 2023 - July 2023</span>
+                        <h3>Manufacturing Engineer Intern</h3>
+                        <div class="subtitle">Build Forward Foundation</div>
+                        <ul>
+                            <li>Maintained laser cutting and metallurgy equipment</li>
+                            <li>Developed motorized vehicle prototypes</li>
+                            <li>Optimized manufacturing processes</li>
+                            <li>Acted as instructor and educator for clients</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Mar 2022 - Sept 2024</span>
+                        <h3>Film Producer</h3>
+                        <div class="subtitle">CultureWorks Richmond</div>
+                        <ul>
+                            <li>Developed and produced documentaries showcasing storytelling skills</li>
+                            <li>Engaged in creative writing for stories and poems</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Aug 2021 - Aug 2022</span>
+                        <h3>Photographer</h3>
+                        <div class="subtitle">JC Penny Portrait Studio</div>
+                        <ul>
+                            <li>Awarded Top Sales Associate twice for highest sales</li>
+                            <li>Developed expertise in portrait photography and lighting</li>
+                            <li>Optimized sales statistics and customer experience</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Jan 2023 - June 2025</span>
+                        <h3>Freelance Writer</h3>
+                        <div class="subtitle">Ideapress Publishing</div>
+                        <ul>
+                            <li>Design questionnaires and activity guides to accompany readings</li>
+                            <li>Create educational content for publications</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Aug 2024 - Jan 2025</span>
+                        <h3>Executive Assistant</h3>
+                        <div class="subtitle">Association of Language Companies</div>
+                        <ul>
+                            <li>Supported executive operations and administrative tasks</li>
+                            <li>Coordinated communications and scheduling</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">May 2024 - June 2024</span>
+                        <h3>Photojournalist</h3>
+                        <div class="subtitle">The Virginian-Pilot</div>
+                        <ul>
+                            <li>Captured news events and human interest stories</li>
+                            <li>Provided visual journalism for publication</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Mar 2023 - June 2024</span>
+                        <h3>Freelance Author</h3>
+                        <div class="subtitle">FilmFreeway</div>
+                        <ul>
+                            <li>Wrote and edited stories for publishing</li>
+                            <li>Acted as consultant for creative projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card hover-lift">
+                        <span class="date">Nov 2021 - May 2022</span>
+                        <h3>Private Tutor</h3>
+                        <div class="subtitle">Self-employed</div>
+                        <ul>
+                            <li>Provided personalized tutoring services</li>
+                            <li>Developed custom educational materials</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="projects" class="tab-content">
+        <!-- Research Tab -->
+        <div id="research" class="tab-content">
             <div class="resume-section">
-                <h2>Projects</h2>
-                <div class="resume-card">
-                    <h3>Williamsburg STEM Symposium</h3>
-                    <div class="subtitle">Lead Producer</div>
-                    <p>Created and hosted William and Mary's first annual STEM symposium, featuring a panel of tech and engineering professionals</p>
-                </div>
-                
-                <div class="resume-card">
-                    <h3>Low Angle Reflectivity Experiment</h3>
-                    <div class="subtitle">Student Researcher</div>
-                    <ul>
-                        <li>Developed electronic instrument for measuring the reflectivity of infrared light at shallow angles on variable materials</li>
-                        <li>Generated experiment and created report in collaboration with CERN, NIST, and CALTECH</li>
-                    </ul>
+                <h2 class="section-title">Research & Projects</h2>
+                <div class="research-projects">
+
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>AI Fiber-Optic Defect Analyzer</h3>
+                            <span class="project-status">Weiner Fiber Optics</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Engineered a custom microscope and software program to automatically locate and identify surface defects on fiber-optic end-faces, thereby enhancing transmission efficiency for medical applications like kidney stone removal and cancer treatment. </p>
+                            <div class="project-tags">
+                                <span class="tag">Signal Processing</span>
+                                <span class="tag">Wildlife Conservation</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Time-of-Flight Secondary Ion Mass Spectrometer (TOF-SIMS)<h3>
+                            <span class="project-status">ARC Labs</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Assmebled a Time-of-Flight secondary ion mass spectrometer that analyzes the chemical composition of the outermost atomic layers of a solid material. </p>
+                            <div class="project-tags">
+                                <span class="tag">Signal Processing</span>
+                                <span class="tag">Wildlife Conservation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Atomistic Spin Dynamics Modeling</h3>
+                            <span class="project-status">Research</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Investigating optimal configurations of iron-nickel and cobalt-iron alloys to enhance magnetization properties as a cost-effective alternative to rare earth metal semiconductors.</p>
+                            <div class="project-tags">
+                                <span class="tag">Applied Physics</span>
+                                <span class="tag">Materials Science</span>
+                                <span class="tag">Computational Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Bird Sensor Technology</h3>
+                            <span class="project-status">Hackathon Winner</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Developed an innovative sensor system that detects bird-window collisions through frequency analysis, winning the William and Mary 2024 Hackathon.</p>
+                            <div class="project-tags">
+                                <span class="tag">Signal Processing</span>
+                                <span class="tag">Wildlife Conservation</span>
+                                <span class="tag">IoT</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Radio-frequency Mechanical Analyzer</h3>
+                            <span class="project-status">Innovation</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Created a radio sensor capable of detecting and locating mechanical items not intentionally transmitting signals, such as fans or turbines.</p>
+                            <div class="project-tags">
+                                <span class="tag">RF Engineering</span>
+                                <span class="tag">Signal Detection</span>
+                                <span class="tag">Security Applications</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Low Angle Reflectivity Experiment</h3>
+                            <span class="project-status">Collaboration</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Developed electronic instruments for measuring infrared light reflectivity at shallow angles on variable materials in collaboration with CERN, NIST, and CALTECH.</p>
+                            <div class="project-tags">
+                                <span class="tag">Optics</span>
+                                <span class="tag">Instrumentation</span>
+                                <span class="tag">International Collaboration</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Williamsburg STEM Symposium</h3>
+                            <span class="project-status">Event Creation</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Created and hosted William & Mary's first annual STEM symposium, featuring a panel of tech and engineering professionals to speak and connect with the community.</p>
+                            <div class="project-tags">
+                                <span class="tag">Event Management</span>
+                                <span class="tag">STEM Outreach</span>
+                                <span class="tag">Community Engagement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Restructured Lab 168</h3>
+                            <span class="project-status">Laboratory Design</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Transformed an underutilized laboratory into a fully operational facility by managing the equipment budget and redesigning the space to optimize workflow.</p>
+                            <div class="project-tags">
+                                <span class="tag">Laboratory Management</span>
+                                <span class="tag">Workflow Optimization</span>
+                                <span class="tag">Infrastructure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>Keynreed</h3>
+                            <span class="project-status">Web Development</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Developed an arts outsourcing and consultation website to better connect companies to creative professionals.</p>
+                            <div class="project-tags">
+                                <span class="tag">Web Development</span>
+                                <span class="tag">Creative Services</span>
+                                <span class="tag">Business Development</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card hover-lift">
+                        <div class="project-header">
+                            <h3>WeMake Film Makers</h3>
+                            <span class="project-status">Film Production</span>
+                        </div>
+                        <div class="project-content">
+                            <p>Directed films and contributed to the progress of a filmmaking club at the College of William & Mary, earning acknowlegment at the Ampersand International Arts Festival.</p>
+                            <div class="project-tags">
+                                <span class="tag">Film Direction</span>
+                                <span class="tag">Creative Arts</span>
+                                <span class="tag">Festival Recognition</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="volunteer" class="tab-content">
+        <!-- Achievements Tab -->
+        <div id="achievements" class="tab-content">
             <div class="resume-section">
-                <h2>Volunteer Service Activities</h2>
-                <div class="resume-card">
-                    <h3>William and Mary Robotics Club</h3>
-                    <div class="subtitle">President</div>
-                    <ul>
-                        <li>Led executive meetings and secured sponsorships</li>
-                        <li>Developed semester curriculum of electronic projects</li>
-                    </ul>
-                </div>
-                
-                <div class="resume-card">
-                    <h3>NASA Langley Research Center</h3>
-                    <div class="subtitle">Open House Volunteer</div>
-                    <ul>
-                        <li>Organized the flow of incoming guests</li>
-                    </ul>
-                </div>
-                
-                <div class="resume-card">
-                    <h3>Association Of Computing Machinery</h3>
-                    <div class="subtitle">Outreach Director</div>
-                    <ul>
-                        <li>Improved meeting engagement</li>
-                        <li>Facilitated industry connections with William & Mary students</li>
-                    </ul>
+                <h2 class="section-title">Leadership & Achievements</h2>
+                <div class="achievements-grid">
+<div class="achievement-card hover-float">
+    <div class="achievement-icon"><i class="fa fa-users"></i></div>
+    <h3>Leadership Positions</h3>
+    <div class="leadership-grid">
+        <div class="leadership-item">
+            <strong class="leadership-role">President</strong>
+            <span class="leadership-org">William and Mary Robotics Club (2 yrs)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">President</strong>
+            <span class="leadership-org">Data Science Society (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">President</strong>
+            <span class="leadership-org">Tech Executive Association (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">President</strong>
+            <span class="leadership-org">Photo Club (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Marketing Head</strong>
+            <span class="leadership-org">Tribe Innovation (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Director of Public Relations</strong>
+            <span class="leadership-org">Association of Computing Machinery (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Outreach Director</strong>
+            <span class="leadership-org">Society of Physics Students(1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Outreach Director</strong>
+            <span class="leadership-org">Association of Computing Machinery(1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Challenge Host</strong>
+            <span class="leadership-org">WM ACM TribeHacks (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Sponsorship Chair</strong>
+            <span class="leadership-org">WM ACM &Hacks (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Producer and MC</strong>
+            <span class="leadership-org">WM Tech Fusion/STEM Symposium (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Band Manager</strong>
+            <span class="leadership-org">WM Middle Eastern Music Ensemble (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Film Director</strong>
+            <span class="leadership-org">WeMake Filmmakers (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Publicity Director</strong>
+            <span class="leadership-org">WM Noetica Journal (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Marketing Lead</strong>
+            <span class="leadership-org">WM Tribe Innovation (1 yr)</span>
+        </div>
+        <div class="leadership-item">
+            <strong class="leadership-role">Youth Leader</strong>
+            <span class="leadership-org">Youth Advisory Council (3yrs)</span>
+        </div>
+    </div>
+</div>
+                    
+                    <div class="achievement-card hover-float">
+                        <div class="achievement-icon"><i class="fa fa-trophy"></i></div>
+                        <h3>Awards & Recognition</h3>
+                        <ul class="achievement-list">
+                            <li>William and Mary Spring 2024 Judo Tournament Winner</li>
+                            <li>William and Mary 2024 Hackathon Winner</li>
+                            <li>Marine Corps Officer Candidate School Attendant</li>
+                            <li>Lead Producer - Williamsburg STEM Symposium</li>
+                            <li>Top Sales Associate - JC Penny Portrait Studio</li>
+                            <li>Film Recognition - Ampersand International Arts Festival</li>
+                        </ul>
+                    </div>
+
+                    <div class="achievement-card hover-float">
+                        <div class="achievement-icon"><i class="fa fa-certificate"></i></div>
+                        <h3>Certifications</h3>
+                        <ul class="achievement-list">
+                            <li>From Excel to Tableau</li>
+                            <li>Everybody's Introduction to Tableau (2022)</li>
+                            <li>Tableau for Data Scientists</li>
+                            <li>Corporate Finance: Environmental, Social, and Governance (ESG)</li>
+                        </ul>
+                    </div>
+
+                    <div class="achievement-card hover-float">
+                        <div class="achievement-icon"><i class="fa fa-handshake-o"></i></div>
+                        <h3>Volunteer Service</h3>
+                        <ul class="achievement-list">
+                            <li>NASA Langley Research Center - Open House Volunteer</li>
+                            <li>Organized flow of incoming guests</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Skills Tab -->
         <div id="skills" class="tab-content">
             <div class="resume-section">
-                <h2>Technical Skills</h2>
-                
-                <div class="resume-card">
-                    <h3>General Technical Skills</h3>
-                    <div style="margin-top: 15px;">
-                        <span class="skill-badge">Microsoft Excel</span>
-                        <span class="skill-badge">PowerPoint</span>
-                        <span class="skill-badge">Word</span>
-                        <span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">Adobe Suite</span>
-                        <span class="skill-badge">Autodesk Suite</span>
-                        <span class="skill-badge">Google Suite</span>
-                        <span class="skill-badge">TinkerCAD</span>
-                        <span class="skill-badge">Tableau</span>
+                <h2 class="section-title">Technical Skills & Languages</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-grid">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">MATLAB</span>
+                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">C++</span>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="resume-card">
-                    <h3>Programming</h3>
-                    <div style="margin-top: 15px;">
-                        <span class="skill-badge">Python</span>
-                        <span class="skill-badge">MATLAB</span>
-                        <span class="skill-badge">Java</span>
+                    
+                    <div class="skill-category">
+                        <h3>Technical Tools</h3>
+                        <div class="skill-grid">
+                            <span class="skill-badge">Adobe Creative Suite</span>
+                            <span class="skill-badge">Autodesk Suite</span>
+                            <span class="skill-badge">TinkerCAD</span>
+                            <span class="skill-badge">Tableau</span>
+                            <span class="skill-badge">Microsoft Office</span>
+                            <span class="skill-badge">Google Suite</span>
+                            <span class="skill-badge">CAD Software</span>
+                            <span class="skill-badge">3D Printing</span>
+                            <span class="skill-badge">Fusion360</span>
+                            <span class="skill-badge">Apex</span>
+                            <span class="skill-badge">Makerbot</span>
+                            <span class="skill-badge">Jira Service Manager</span>
+                        </div>
                     </div>
-                </div>
 
+                    <div class="skill-category">
+                        <h3>Specialized Skills</h3>
+                        <div class="skill-grid">
+                            <span class="skill-badge">Computer Vision</span>
+                            <span class="skill-badge">Engineering Design</span>
+                            <span class="skill-badge">Fiber Optics</span>
+                            <span class="skill-badge">Cinematography</span>
+                            <span class="skill-badge">Signal Processing</span>
+                            <span class="skill-badge">RF Engineering</span>
+                            <span class="skill-badge">Data Acquisition</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Communication & Creative Skills</h3>
+                        <div class="skill-grid">
+                            <span class="skill-badge">Written Communication</span>
+                            <span class="skill-badge">Verbal Communication</span>
+                            <span class="skill-badge">Interviewing</span>
+                            <span class="skill-badge">Multimedia Storytelling</span>
+                            <span class="skill-badge">Photography</span>
+                            <span class="skill-badge">Videography</span>
+                            <span class="skill-badge">Creative Writing</span>
+                            <span class="skill-badge">Event Management</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <div class="language-cards">
+                            <div class="language-card">
+                                <div class="language-flag">🇺🇸</div>
+                                <h4>English</h4>
+                            </div>
+                            <div class="language-card">
+                                <div class="language-flag">🇳🇬</div>
+                                <h4>Igbo</h4>
+                            </div>
+                            <div class="language-card">
+                                <div class="language-flag">🇯🇵</div>
+                                <h4>Japanese</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Musical Instruments</h3>
+                        <div class="instrument-grid">
+                            <div class="instrument-card">
+                                <i class="fa fa-music"></i>
+                                <span>Piano</span>
+                            </div>
+                            <div class="instrument-card">
+                                <i class="fa fa-music"></i>
+                                <span>Violin</span>
+                            </div>
+                            <div class="instrument-card">
+                                <i class="fa fa-music"></i>
+                                <span>Guitar</span>
+                            </div>
+                            <div class="instrument-card">
+                                <i class="fa fa-microphone"></i>
+                                <span>Voice</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Tab -->
+        <div id="contact" class="tab-content">
+            <div class="contact-section">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>I'm always open to new opportunities, creative collaborations, or just having a great conversation about physics, philosophy, or photography.</p>
+                        
+                        <div class="contact-methods">
+                            <a href="mailto:ecsampson03@gmail.com" class="contact-method">
+                                <i class="fa fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>ecsampson03@gmail.com</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" class="contact-method">
+                                <i class="fa fa-linkedin"></i>
+                                <div>
+                                    <h4>LinkedIn</h4>
+                                    <p>linkedin.com/in/emmanuel-sampson</p>
+                                </div>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="contact-cta">
+                        <h3>Photography Services</h3>
+                        <p>Available for professional photography services including events, portraits, and creative projects.</p>
+                        <a href="mailto:ecsampson03@gmail.com" class="cta-button">
+                            <span>Book a Session</span>
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -352,25 +758,76 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
+        // Tab functionality
         function openTab(evt, tabName) {
             var i, tabcontent, tabbuttons;
             
-            // Hide all tab content
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].className = tabcontent[i].className.replace(" active", "");
             }
             
-            // Remove active class from all tab buttons
             tabbuttons = document.getElementsByClassName("tab-button");
             for (i = 0; i < tabbuttons.length; i++) {
                 tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
             }
             
-            // Show the current tab and add active class to the button
             document.getElementById(tabName).className += " active";
             evt.currentTarget.className += " active";
+            
+            // Trigger animations for the newly opened tab
+            animateTabContent(tabName);
         }
+        
+        // Animate tab content
+        function animateTabContent(tabName) {
+            const content = document.getElementById(tabName);
+            const elements = content.querySelectorAll('.fade-in-up, .card-animation, .hover-lift, .skill-progress');
+            
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-up, .slide-in, .card-animation');
+            animatedElements.forEach(el => observer.observe(el));
+            
+            // Initial animation for overview tab
+            setTimeout(() => animateTabContent('overview'), 100);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
