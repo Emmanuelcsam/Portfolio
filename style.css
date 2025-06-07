@@ -1,0 +1,209 @@
+
+
+.navbar {
+    display: flex;
+}
+
+#logo {
+    width: 100px; /* Adjust the width as needed */
+    height: auto; /* This will maintain the aspect ratio of the image */
+  }
+.navbar.fixed-left {
+    right: auto;
+}
+
+.navbar.fixed-left {
+    bottom: 0;
+    width: 232px;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+
+.navbar.fixed-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.bg-primary {
+    background-color: whitesmoke !important;
+}
+
+.max-height-300px {
+    max-height: 300px !important;
+  }
+
+  /* Adjustments for different screen sizes */
+  @media (max-width: 768px) {
+    .max-height-300px {
+      max-height: 200px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .max-height-300px {
+      max-height: 150px;
+    }
+  }
+
+ul li {
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: large;
+}
+  #gallery {
+    margin-left: 237px;
+    -webkit-column-count:4;
+    -moz-column-count:4;
+    column-count:4;
+    background-color: black;
+    
+    -webkit-column-gap:20px;
+    -moz-column-gap:20px;
+    column-gap:20px;
+  }
+  @media (max-width:1200px){
+    #gallery{
+    -webkit-column-count:3;
+    -moz-column-count:3;
+    column-count:3;
+      
+    -webkit-column-gap:20px;
+    -moz-column-gap:20px;
+    column-gap:20px;
+  }
+  }
+  @media (max-width:800px){
+    #gallery{
+    -webkit-column-count:2;
+    -moz-column-count:2;
+    column-count:2;
+      
+    -webkit-column-gap:20px;
+    -moz-column-gap:20px;
+    column-gap:20px;
+  }
+  }
+  @media (max-width:600px){
+    #gallery{
+    -webkit-column-count:1;
+    -moz-column-count:1;
+    column-count:1;
+  }  
+  }
+  #gallery img,#gallery video {
+    width:100%;
+    height:auto;
+    margin: 4% auto;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  .modal-img,.model-vid{
+    width:100%;
+    height:auto;
+  }
+  .modal-body{
+    padding:0px;
+  }
+
+.footerLinks a svg:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  a {
+    text-decoration: none; /* Removes the underline from links */
+    color: black;
+    display: flex;
+    justify-content: center;
+  }
+  
+.img-responsive:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+
+}
+  .hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: black;
+  }
+  
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .section:hover {
+    transform: scale(1.5);
+  }
+  .section {
+
+    transition: transform 0.3s ease;
+  }
+  .fa {
+    transition: transform 0.3s ease; /* Smooth transition for the transform property */
+  }
+  
+  .fa:hover {
+    transform: scale(1.5); /* The icon will grow to 1.5 times its original size on hover */
+    /* You can also add other hover styles here if needed */
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+
+
+
+  body {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 100px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: medium;
+    background-color: whitesmoke;
+  }
+  .main-content {
+    margin-left: 232px; /* Pushes the main content to the right of the navbar */
+    background-color: whitesmoke;
+  }
+
+  h1 {
+    color: black;
+    font-family: 'Titillium Web', sans-serif;
+    font-size:xx-large;
+  }
+
+  h2 {
+    color: black;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: medium;
+  }
+
+  .img-centered {
+    display: block; /* Allows margin auto to center the image */
+    max-width: 50%; /* Adjust the size to your preference */
+    height: auto; /* Keeps the aspect ratio */
+    margin: 20px auto; /* Adds space above and below the image and centers it horizontally */
+  }
+  

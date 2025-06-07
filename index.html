@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arts Portfolio</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+
+  
+  <body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Gallery -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <img src="logo.png" id="logo" alt="E Logo">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="hover-underline-animation" href="index.html">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="hover-underline-animation" href="about.html">About the Artist</a>
+                </li>
+            </ul>
+        <div class="icons-container">
+            <a href="mailto:ecsampson@wm.edu">
+              <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i></a></svg>
+              <a href="mailto:ecsampson@wm.edu">[  ecsampson@wm.edu  ]</a>
+              <br>
+            <a href="https://www.linkedin.com/in/emmanuel-sampson-0b0483225/" target="_blank" rel="noopener noreferrer">
+                <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path> linkedin.com/in/arianna-lagamma</i></a></svg>
+          <footer class="footer">  
+          <a href="https://www.linkedin.com/in/arianna-lagamma/">©Website by Arianna LaGamma 2024. All Rights Reserved.</a>
+          </fo>
+        </div>
+      </div>
+    </nav>
+    <div id="gallery" class="container-fluid">  
+        <img src="castle.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img4.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="pico.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="me.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="mee.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img5.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="palms.jpg" class="card img-responsive" data-enlargable alt="none">
+
+        <img src="img1.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img2.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img3.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="pico.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="pr.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img7.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img6.JPG" class="img-responsive" data-enlargable alt="none">
+        
+        <img src="img10.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img12.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img13.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img14.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img15.JPG" class="img-responsive" data-enlargable alt="none">
+
+      
+      </div>
+      
+
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- JavaScript -->
+<script>
+$(document).ready(function() {
+    $('img[data-enlargable]').addClass('img-enlargable').click(function() {
+        var src = $(this).attr('src');
+        $('<div>').css({
+            background: 'RGBA(0,0,0,.5) url('+src+') no-repeat center',
+            backgroundSize: 'contain',
+            width:'100%', height:'100%',
+            position:'fixed',
+            zIndex:'10000',
+            top:'0', left:'0',
+            cursor: 'zoom-out'
+        }).click(function() {
+            $(this).remove();
+        }).appendTo('body');
+    });
+});
+</script>
+  </body>
+</html>
+
+</script>
+  </body>
+</html>
