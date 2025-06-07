@@ -1047,3 +1047,120 @@ h3 {
         page-break-after: always;
     }
 }
+/* ===== Achievements Section - V2 Styles ===== */
+
+.achievements-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 2rem;
+}
+
+.ach-card-v2 {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.ach-card-v2:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--highlight-color);
+}
+
+.leadership-card-v2 {
+    grid-column: 1 / -1; /* Spans full width */
+}
+
+.ach-card-header-v2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.ach-card-header-v2 i {
+    font-size: 1.5rem;
+    color: var(--highlight-color);
+}
+
+.ach-card-header-v2 h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+}
+
+.ach-card-body-v2 {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Leadership Card Grid */
+.leadership-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.leadership-item-v2 {
+    background-color: #f8f9fa;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-color);
+    transition: all var(--transition-fast);
+    font-size: 0.95rem;
+}
+
+.leadership-item-v2:hover {
+    transform: translateX(5px);
+    background-color: #e9ecef;
+}
+
+.leadership-item-v2 strong {
+    color: var(--primary-color);
+    margin-right: 0.5em;
+}
+
+.leadership-item-v2 span {
+    color: var(--text-secondary);
+}
+
+/* Awards, Certs, Volunteer List Styles */
+.accolade-item-v2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+.accolade-item-v2:last-child {
+    border-bottom: none;
+}
+
+.accolade-item-v2 i {
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+}
+
+.accolade-item-v2 span {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+.accolade-item-v2 span strong {
+    font-family: var(--font-display);
+    color: var(--secondary-color);
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 992px) {
+    .achievements-grid-v2 {
+        grid-template-columns: 1fr;
+    }
+}
