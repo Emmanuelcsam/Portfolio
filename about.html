@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emmanuel Sampson | Physics & Engineering</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Additional styles for resume section */
+        .resume-container {
+            padding: 20px;
+            margin-left: 250px;
+            max-width: 1200px;
+        }
+        
+        .resume-section {
+            margin-bottom: 40px;
+        }
+        
+        .resume-section h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .resume-card {
+            background-color: #f8f8f8;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .resume-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .resume-card h3 {
+            margin-top: 0;
+            font-weight: 600;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .resume-card .subtitle {
+            color: #007bff;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .resume-card .date {
+            float: right;
+            background-color: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 15px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .skill-badge:hover {
+            background: #007bff;
+            color: white;
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            border-bottom: 3px solid #007bff;
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .progress-bar-container {
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(to right, #007bff, #00bfff);
+        }
+        
+        .bio-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .bio-image {
+            flex: 0 0 200px;
+        }
+        
+        .bio-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .resume-container {
+                margin-left: 0;
+                padding: 15px;
+            }
+            
+            .bio-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .bio-image img {
+                max-width: 150px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <img src="logo.png" id="logo" alt="E Logo">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="hover-underline-animation" href="index.html">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="hover-underline-animation" href="about.html">About</a>
+                </li>
+            </ul>
+            <div class="icons-container">
+                <a href="mailto:ecsampson@wm.edu">
+                    <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i>
+                </a>
+                <a href="mailto:ecsampson@wm.edu">[  ecsampson@wm.edu  ]</a>
+                <br>
+                <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer">
+                    <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/emmanuel-sampson/">linkedin.com/in/emmanuel-sampson</a>
+            </div>
+            <footer class="footer">  
+                <a href="#">©Emmanuel Sampson 2025. All Rights Reserved.</a>
+            </footer>
+        </div>
+    </nav>
+
+    <!-- Resume Content -->
+    <div class="resume-container">
+        <div class="bio-container">
+            <div class="bio-image">
+                <img src="eman.png" class="img-responsive" alt="Emmanuel Sampson">
+            </div>
+            <div class="bio-text">
+                <h1>Emmanuel Sampson</h1>
+                <p>I'm a physics and philosophy double major at William & Mary, with a keen interest in technical ethics and the advancement of the world at large.</p>
+                <p>I have been a writer and photographer for years since I started working for a film production company in high school. From there, I have only improved my abilities in both crafts. Outside of school, I run a digital media and arts outsourcing company providing services to people looking to develop their creative projects.</p>
+                <p>The future is never certain, but we must strive for the best possibilities we envision. I hope to one day work on greater experiments and projects to bring forth a world beyond science fiction. Each step forward, as well as the expressions of my life, makes me whole.</p>
+            </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div style="margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+            <button class="tab-button active" onclick="openTab(event, 'education')">Education</button>
+            <button class="tab-button" onclick="openTab(event, 'experience')">Experience</button>
+            <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
+            <button class="tab-button" onclick="openTab(event, 'volunteer')">Volunteer</button>
+            <button class="tab-button" onclick="openTab(event, 'skills')">Skills</button>
+        </div>
+
+        <!-- Education Tab -->
+        <div id="education" class="tab-content active">
+            <div class="resume-section">
+                <h2>Education</h2>
+                <div class="resume-card">
+                    <span class="date">Expected 2026</span>
+                    <h3>William & Mary</h3>
+                    <div class="subtitle">B.S. in Physics</div>
+                    <p>Concentration in Engineering Physics and Applied Design</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Tab -->
+        <div id="experience" class="tab-content">
+            <div class="resume-section">
+                <h2>Work Experience</h2>
+                <div class="resume-card">
+                    <span class="date">Oct 2023 - Present</span>
+                    <h3>Physics Research Assistant</h3>
+                    <div class="subtitle">Applied Research Center Core Labs, Williamsburg, VA</div>
+                    <ul>
+                        <li>Analyzed and organized data captured throughout experiments</li>
+                        <li>Managed budget to strategically allocate funds and enhance work efficiency</li>
+                        <li>Developed research experiments on reflective optics</li>
+                        <li>Constructed electronics for innovative data acquisitioning</li>
+                    </ul>
+                </div>
+                
+                <div class="resume-card">
+                    <span class="date">Oct 2022 - Nov 2023</span>
+                    <h3>Student Engineer</h3>
+                    <div class="subtitle">W&M Makerspace, Williamsburg, VA</div>
+                    <ul>
+                        <li>Educated students on various styles of engineering</li>
+                        <li>Developed and displayed an understanding of electrical engineering and CAD software</li>
+                        <li>Managed team responsibilities and handled electro optic equipment</li>
+                    </ul>
+                </div>
+                
+                <div class="resume-card">
+                    <span class="date">May 2023 - July 2023</span>
+                    <h3>Manufacturing Engineer Intern</h3>
+                    <div class="subtitle">Build Forward Foundation, Richmond, VA</div>
+                    <ul>
+                        <li>Maintained quality of equipment used for laser cutting, metallurgy, and wood working</li>
+                        <li>Developed motorized vehicle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Tab -->
+        <div id="projects" class="tab-content">
+            <div class="resume-section">
+                <h2>Projects</h2>
+                <div class="resume-card">
+                    <h3>Williamsburg STEM Symposium</h3>
+                    <div class="subtitle">Lead Producer</div>
+                    <p>Created and hosted William and Mary's first annual STEM symposium, featuring a panel of tech and engineering professionals</p>
+                </div>
+                
+                <div class="resume-card">
+                    <h3>Low Angle Reflectivity Experiment</h3>
+                    <div class="subtitle">Student Researcher</div>
+                    <ul>
+                        <li>Developed electronic instrument for measuring the reflectivity of infrared light at shallow angles on variable materials</li>
+                        <li>Generated experiment and created report in collaboration with CERN, NIST, and CALTECH</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volunteer Tab -->
+        <div id="volunteer" class="tab-content">
+            <div class="resume-section">
+                <h2>Volunteer Service Activities</h2>
+                <div class="resume-card">
+                    <h3>William and Mary Robotics Club</h3>
+                    <div class="subtitle">President</div>
+                    <ul>
+                        <li>Led executive meetings and secured sponsorships</li>
+                        <li>Developed semester curriculum of electronic projects</li>
+                    </ul>
+                </div>
+                
+                <div class="resume-card">
+                    <h3>NASA Langley Research Center</h3>
+                    <div class="subtitle">Open House Volunteer</div>
+                    <ul>
+                        <li>Organized the flow of incoming guests</li>
+                    </ul>
+                </div>
+                
+                <div class="resume-card">
+                    <h3>Association Of Computing Machinery</h3>
+                    <div class="subtitle">Outreach Director</div>
+                    <ul>
+                        <li>Improved meeting engagement</li>
+                        <li>Facilitated industry connections with William & Mary students</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Tab -->
+        <div id="skills" class="tab-content">
+            <div class="resume-section">
+                <h2>Technical Skills</h2>
+                
+                <div class="resume-card">
+                    <h3>General Technical Skills</h3>
+                    <div style="margin-top: 15px;">
+                        <span class="skill-badge">Microsoft Excel</span>
+                        <span class="skill-badge">PowerPoint</span>
+                        <span class="skill-badge">Word</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Adobe Suite</span>
+                        <span class="skill-badge">Autodesk Suite</span>
+                        <span class="skill-badge">Google Suite</span>
+                        <span class="skill-badge">TinkerCAD</span>
+                        <span class="skill-badge">Tableau</span>
+                    </div>
+                </div>
+                
+                <div class="resume-card">
+                    <h3>Programming</h3>
+                    <div style="margin-top: 15px;">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">MATLAB</span>
+                        <span class="skill-badge">Java</span>
+                    </div>
+                </div>
+                
+                <div class="resume-card">
+                    <h3>Skill Proficiency</h3>
+                    <div style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Engineering & Physics</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 90%;"></div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Programming</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 85%;"></div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Project Management</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 80%;"></div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Leadership</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            // Hide all tab content
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            }
+            
+            // Remove active class from all tab buttons
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            
+            // Show the current tab and add active class to the button
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
