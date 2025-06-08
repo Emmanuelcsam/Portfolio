@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Emmanuel's Portfolio - Gallery</title>
+    <title>Emmanuel's Portfolio - Dynamic Gallery</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        /* Enhanced styles for gallery from the new file */
+        /* Enhanced styles for dynamic gallery */
         #gallery {
             position: relative;
             min-height: 100vh;
@@ -34,7 +34,21 @@
             margin-bottom: 20px;
             display: inline-block;
             width: 100%;
-            transition: all 0.3s ease;
+            opacity: 0; /* Start hidden for fade-in effect */
+            transform: scale(0.95);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Class to show items */
+        .gallery-item.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Class to hide items */
+        .gallery-item.hide {
+            opacity: 0;
+            transform: scale(0.95);
         }
 
         .gallery-item img {
@@ -45,7 +59,7 @@
         }
 
         .gallery-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.02) !important; /* Use important to override show/hide transform */
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
@@ -101,36 +115,34 @@
             transform: rotate(90deg);
         }
         
+        /* Loading indicator */
+        .loading-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+        }
+
+        .loading-indicator.active {
+            opacity: 1;
+        }
+        
         /* Responsive adjustments */
-        @media (min-width: 1600px) {
-            #gallery { column-count: 5; }
-        }
-        
-        @media (min-width: 2000px) {
-            #gallery { column-count: 6; max-width: 2400px; margin-right: auto;}
-        }
-
-        @media (max-width: 1200px) {
-            #gallery { column-count: 3; }
-        }
-        
-        @media (max-width: 992px) {
-            #gallery { column-count: 2; padding-top: calc(var(--mobile-header-height) + 20px); }
-        }
-        
-        @media (max-width: 768px) {
-            #gallery { column-count: 2; padding: calc(var(--mobile-header-height) + 10px) 10px 10px; column-gap: 10px; }
-            .gallery-item { margin-bottom: 10px; }
-        }
-        
-        @media (max-width: 480px) {
-            #gallery { column-count: 1; padding: calc(var(--mobile-header-height) + 10px) 5px 10px; }
-        }
-
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .gallery-item:active { transform: scale(0.98); }
-        }
+        @media (min-width: 1600px) { #gallery { column-count: 5; } }
+        @media (min-width: 2000px) { #gallery { column-count: 6; max-width: 2400px; margin-right: auto;} }
+        @media (max-width: 1200px) { #gallery { column-count: 3; } }
+        @media (max-width: 992px) { #gallery { column-count: 2; padding-top: calc(var(--mobile-header-height) + 20px); } }
+        @media (max-width: 768px) { #gallery { column-count: 2; padding: calc(var(--mobile-header-height) + 10px) 10px 10px; column-gap: 10px; } .gallery-item { margin-bottom: 10px; } }
+        @media (max-width: 480px) { #gallery { column-count: 1; padding: calc(var(--mobile-header-height) + 10px) 5px 10px; } }
+        @media (hover: none) and (pointer: coarse) { .gallery-item:active { transform: scale(0.98); } }
     </style>
 </head>
 
@@ -141,7 +153,6 @@
             <span></span>
         </button>
     </header>
-
     <div class="sidebar-overlay"></div>
     
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
@@ -156,15 +167,11 @@
                 </li>
             </ul>
             <div class="icons-container">
-                <a href="mailto:ecsampson03@gmail.com">
-                    <i class="fa fa-envelope-o mr-3"></i>
-                </a>
+                <a href="mailto:ecsampson03@gmail.com"><i class="fa fa-envelope-o mr-3"></i></a>
                 <a href="mailto:ecsampson03@gmail.com">ecsampson03@gmail.com</a>
                 <br>
                 <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
-                    </svg>
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path></svg>
                 </a>
                 <a href="https://www.linkedin.com/in/emmanuel-sampson/">linkedin.com/in/emmanuel-sampson</a>
             </div>
@@ -174,84 +181,133 @@
         </div>
     </nav>
 
-    <div id="gallery" class="container-fluid">
-        <div class="gallery-item"><img src="castle.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img4.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="pico.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="me.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="mee.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img5.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="palms.jpg" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img1.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img2.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img3.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="pico.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="pr.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img7.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img6.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img10.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img12.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img13.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img14.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-        <div class="gallery-item"><img src="img15.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
-    </div>
+    <div id="gallery" class="container-fluid"></div>
+    
+    <div class="loading-indicator" id="loadingIndicator">Loading new images...</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- DYNAMIC GALLERY LOGIC ---
+
+            const galleryConfig = {
+                // Add all your image filenames here. They must be in the same directory as this HTML file.
+                imagePool: [
+                    'castle.JPG', 'img4.JPG', 'pico.JPG', 'me.JPG', 'mee.JPG', 
+                    'img5.JPG', 'palms.jpg', 'img1.JPG', 'img2.JPG', 'img3.JPG', 
+                    'pr.JPG', 'img7.JPG', 'img6.JPG', 'img10.JPG', 'img12.JPG', 
+                    'img13.JPG', 'img14.JPG', 'img15.JPG'
+                ],
+                batchSize: 7,
+                displayDuration: 10000, // 10 seconds
+                transitionDuration: 1000, // 1 second
+            };
+
+            const galleryEl = document.getElementById('gallery');
+            const loadingIndicatorEl = document.getElementById('loadingIndicator');
+            let availableImages = [];
+            let isTransitioning = false;
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            function getNextBatch() {
+                const batch = [];
+                // If not enough images are available for a full batch, replenish the pool
+                if (availableImages.length < galleryConfig.batchSize) {
+                    availableImages = [...galleryConfig.imagePool];
+                    shuffleArray(availableImages);
+                }
+                // Take a batch from the available images
+                for (let i = 0; i < galleryConfig.batchSize && availableImages.length > 0; i++) {
+                    batch.push(availableImages.pop());
+                }
+                return batch;
+            }
+
+            async function cycleImages() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
+                loadingIndicatorEl.classList.add('active');
+
+                // 1. Fade out current images
+                const currentItems = galleryEl.querySelectorAll('.gallery-item');
+                currentItems.forEach(item => item.classList.add('hide'));
+
+                // Wait for fade-out transition to complete
+                await new Promise(resolve => setTimeout(resolve, galleryConfig.transitionDuration));
+                
+                galleryEl.innerHTML = ''; // Clear the gallery
+
+                // 2. Get and display new batch
+                const newBatch = getNextBatch();
+                newBatch.forEach((imageSrc, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = imageSrc;
+                    img.alt = 'Gallery Image';
+                    img.setAttribute('data-enlargable', 'true');
+                    img.loading = 'lazy';
+
+                    item.appendChild(img);
+                    galleryEl.appendChild(item);
+                });
+
+                loadingIndicatorEl.classList.remove('active');
+
+                // 3. Fade in new images with a slight delay
+                await new Promise(resolve => setTimeout(resolve, 50)); // Short delay for repaint
+                
+                const newItems = galleryEl.querySelectorAll('.gallery-item');
+                newItems.forEach(item => {
+                    item.classList.add('show');
+                });
+                
+                isTransitioning = false;
+            }
+
             // --- Mobile Navigation Toggle ---
             const sidebarToggle = document.querySelector('.sidebar-toggle');
             const overlay = document.querySelector('.sidebar-overlay');
             const body = document.body;
-            
-            function toggleSidebar() {
-                body.classList.toggle('sidebar-open');
-            }
-            
-            if (sidebarToggle) {
-                sidebarToggle.addEventListener('click', toggleSidebar);
-            }
-            
-            if (overlay) {
-                overlay.addEventListener('click', toggleSidebar);
-            }
-            
+            function toggleSidebar() { body.classList.toggle('sidebar-open'); }
+            if (sidebarToggle) { sidebarToggle.addEventListener('click', toggleSidebar); }
+            if (overlay) { overlay.addEventListener('click', toggleSidebar); }
             const navLinks = document.querySelectorAll('.navbar-nav a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (window.innerWidth < 992) {
-                        body.classList.remove('sidebar-open');
-                    }
+                    if (window.innerWidth < 992) { body.classList.remove('sidebar-open'); }
                 });
             });
 
             // --- Lightbox Functionality ---
-            const gallery = document.getElementById('gallery');
-            if (gallery) {
-                gallery.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'IMG' && e.target.hasAttribute('data-enlargable')) {
-                        openLightbox(e.target.src);
-                    }
-                });
-            }
+            galleryEl.addEventListener('click', (e) => {
+                if (e.target.tagName === 'IMG' && e.target.hasAttribute('data-enlargable')) {
+                    openLightbox(e.target.src);
+                }
+            });
 
             function openLightbox(src) {
                 const lightbox = document.createElement('div');
                 lightbox.className = 'lightbox';
-                
                 const img = document.createElement('img');
                 img.src = src;
                 img.alt = 'Enlarged gallery image';
-                
                 const closeBtn = document.createElement('div');
                 closeBtn.className = 'lightbox-close';
                 closeBtn.innerHTML = '&times;';
-                
-                lightbox.appendChild(img);
-                lightbox.appendChild(closeBtn);
-                
+                lightbox.append(img, closeBtn);
+
                 const closeLightbox = () => {
                     lightbox.classList.remove('active');
                     setTimeout(() => lightbox.remove(), 300);
@@ -259,33 +315,27 @@
                 };
                 
                 lightbox.onclick = closeLightbox;
-                closeBtn.onclick = closeLightbox;
                 img.onclick = (e) => e.stopPropagation();
-                
                 document.body.appendChild(lightbox);
                 
-                requestAnimationFrame(() => {
-                    lightbox.classList.add('active');
-                });
+                requestAnimationFrame(() => lightbox.classList.add('active'));
                 
-                const escapeHandler = (e) => {
-                    if (e.key === 'Escape') {
-                        closeLightbox();
-                    }
-                };
+                const escapeHandler = (e) => { if (e.key === 'Escape') closeLightbox(); };
                 document.addEventListener('keydown', escapeHandler);
             }
 
             // --- Sidebar Resize Handler ---
             let resizeTimer;
-            window.addEventListener('resize', function() {
+            window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    if (window.innerWidth >= 992) {
-                        document.body.classList.remove('sidebar-open');
-                    }
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth >= 992) { body.classList.remove('sidebar-open'); }
                 }, 250);
             });
+            
+            // --- Initialize and Start Gallery ---
+            cycleImages(); // Load the first batch immediately
+            setInterval(cycleImages, galleryConfig.displayDuration + galleryConfig.transitionDuration);
         });
     </script>
 </body>
