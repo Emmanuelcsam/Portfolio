@@ -195,7 +195,6 @@
 </head>
 
 <body>
-    <!-- Mobile Header -->
     <header class="mobile-header">
         <img src="logo.png" alt="E Logo" class="mobile-logo">
         <button class="sidebar-toggle" aria-label="Toggle navigation">
@@ -203,10 +202,8 @@
         </button>
     </header>
 
-    <!-- Sidebar Overlay -->
     <div class="sidebar-overlay"></div>
     
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <img src="logo.png" id="logo" alt="E Logo">
@@ -237,13 +234,10 @@
         </div>
     </nav>
 
-    <!-- Dynamic Gallery Container -->
     <div id="gallery" class="container-fluid"></div>
     
-    <!-- Loading Indicator -->
     <div class="loading-indicator" id="loadingIndicator">Loading new images...</div>
 
-    <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
@@ -493,7 +487,6 @@
                     img.alt = `Gallery image ${index + 1}`;
                     img.dataset.enlargable = 'true';
                     img.className = 'img-responsive';
-                    img.loading = 'lazy'; // Add lazy loading for better mobile performance
                     
                     // Preload image
                     img.onload = () => {
