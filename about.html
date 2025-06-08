@@ -94,7 +94,7 @@
                     <div class="hero-actions">
                         <button class="download-cv-btn" onclick="generateProfessionalPDF()">
                             <i class="fa fa-download"></i>
-                            <span>Download CV as PDF</span>
+                            <span>Download Resume</span>
                         </button>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                     <div class="overview-card card-animation">
                         <div class="card-icon"><i class="fa fa-lightbulb-o"></i></div>
                         <h3>Research</h3>
-                        <p>Conducted research in optics, and atomistic spin dynamics modeling for next-generation semiconductors.</p>
+                        <p>Conducted research in optics and atomistic spin dynamics modeling for next-generation semiconductors.</p>
                     </div>
                 </a>
 
@@ -815,7 +815,6 @@
         const name = document.querySelector('.hero-title')?.innerText || 'Emmanuel Sampson';
         const email = 'ecsampson03@gmail.com';
         const linkedin = 'linkedin.com/in/emmanuel-sampson';
-        const phone = '123-456-7890'; // Placeholder phone number
 
         // Education Data
         const educationItems = Array.from(document.querySelectorAll('#education .timeline-item')).slice(0, 2).map(item => ({
@@ -863,7 +862,7 @@
             <style>
                 body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; line-height: 1.4; color: #333; }
                 h1 { font-size: 22pt; text-align: center; margin: 0; padding: 0; }
-                .contact-info { text-align: center; margin-bottom: 20px; font-size: 10pt; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+                .contact-info { text-align: center; margin-bottom: 10px; font-size: 10pt; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
                 .contact-info a { text-decoration: none; color: #0066cc; }
                 .section { margin-bottom: 16px; }
                 .section-title { font-size: 12pt; font-weight: bold; text-transform: uppercase; border-bottom: 2px solid #000; padding-bottom: 4px; margin-bottom: 8px; }
@@ -956,7 +955,7 @@
         element.innerHTML = resumeHtml;
 
         const opt = {
-            margin:       [0.5, 0.5, 0.5, 0.5], // inches
+            margin:       0.25, // inches
             filename:     'Emmanuel_Sampson_CV.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2, useCORS: true },
@@ -975,6 +974,6 @@
     }
     </script>
     <script src="insane_animations.js"></script>
-    
+
 </body>
 </html>
