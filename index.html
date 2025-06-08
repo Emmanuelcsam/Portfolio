@@ -26,6 +26,9 @@
 
         .gallery-item {
             position: relative;
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
@@ -34,21 +37,16 @@
             margin-bottom: 20px;
             display: inline-block;
             width: 100%;
-            opacity: 0; /* Start hidden for fade-in effect */
-            transform: scale(0.95);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* Class to show items */
-        .gallery-item.show {
-            opacity: 1;
-            transform: scale(1);
         }
 
-        /* Class to hide items */
+        .gallery-item.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
         .gallery-item.hide {
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale(0.9) translateY(-20px);
         }
 
         .gallery-item img {
@@ -59,8 +57,12 @@
         }
 
         .gallery-item:hover {
-            transform: scale(1.02) !important; /* Use important to override show/hide transform */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
         /* Lightbox styles */
@@ -114,7 +116,7 @@
             background: rgba(255, 255, 255, 0.2);
             transform: rotate(90deg);
         }
-        
+
         /* Loading indicator */
         .loading-indicator {
             position: fixed;
@@ -134,15 +136,61 @@
         .loading-indicator.active {
             opacity: 1;
         }
+
+        /* Extra large screens */
+        @media (min-width: 1600px) {
+            #gallery {
+                column-count: 5;
+            }
+        }
         
+        @media (min-width: 2000px) {
+            #gallery {
+                column-count: 6;
+                max-width: 2400px;
+                margin-right: auto;
+            }
+        }
+
         /* Responsive adjustments */
-        @media (min-width: 1600px) { #gallery { column-count: 5; } }
-        @media (min-width: 2000px) { #gallery { column-count: 6; max-width: 2400px; margin-right: auto;} }
-        @media (max-width: 1200px) { #gallery { column-count: 3; } }
-        @media (max-width: 992px) { #gallery { column-count: 2; padding-top: calc(var(--mobile-header-height) + 20px); } }
-        @media (max-width: 768px) { #gallery { column-count: 2; padding: calc(var(--mobile-header-height) + 10px) 10px 10px; column-gap: 10px; } .gallery-item { margin-bottom: 10px; } }
-        @media (max-width: 480px) { #gallery { column-count: 1; padding: calc(var(--mobile-header-height) + 10px) 5px 10px; } }
-        @media (hover: none) and (pointer: coarse) { .gallery-item:active { transform: scale(0.98); } }
+        @media (max-width: 1200px) {
+            #gallery {
+                column-count: 3;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            #gallery {
+                column-count: 2;
+                padding-top: calc(var(--mobile-header-height) + 20px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #gallery {
+                column-count: 2;
+                padding: calc(var(--mobile-header-height) + 10px) 10px 10px;
+                column-gap: 10px;
+            }
+            
+            .gallery-item {
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #gallery {
+                column-count: 1;
+                padding: calc(var(--mobile-header-height) + 10px) 5px 10px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .gallery-item:active {
+                transform: scale(0.98);
+            }
+        }
     </style>
 </head>
 
@@ -153,6 +201,7 @@
             <span></span>
         </button>
     </header>
+
     <div class="sidebar-overlay"></div>
     
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
@@ -167,11 +216,15 @@
                 </li>
             </ul>
             <div class="icons-container">
-                <a href="mailto:ecsampson03@gmail.com"><i class="fa fa-envelope-o mr-3"></i></a>
+                <a href="mailto:ecsampson03@gmail.com">
+                    <i class="fa fa-envelope-o mr-3"></i>
+                </a>
                 <a href="mailto:ecsampson03@gmail.com">ecsampson03@gmail.com</a>
                 <br>
                 <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg"><path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path></svg>
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
+                    </svg>
                 </a>
                 <a href="https://www.linkedin.com/in/emmanuel-sampson/">linkedin.com/in/emmanuel-sampson</a>
             </div>
@@ -189,153 +242,369 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
+        // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const body = document.body;
             
-            // --- DYNAMIC GALLERY LOGIC ---
+            function toggleSidebar() {
+                body.classList.toggle('sidebar-open');
+            }
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', toggleSidebar);
+            }
+            
+            // Close sidebar when clicking a link on mobile
+            const navLinks = document.querySelectorAll('.navbar-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        body.classList.remove('sidebar-open');
+                    }
+                });
+            });
+        });
 
-            const galleryConfig = {
-                // Add all your image filenames here. They must be in the same directory as this HTML file.
-                imagePool: [
-                    'castle.JPG', 'img4.JPG', 'pico.JPG', 'me.JPG', 'mee.JPG', 
-                    'img5.JPG', 'palms.jpg', 'img1.JPG', 'img2.JPG', 'img3.JPG', 
-                    'pr.JPG', 'img7.JPG', 'img6.JPG', 'img10.JPG', 'img12.JPG', 
-                    'img13.JPG', 'img14.JPG', 'img15.JPG'
-                ],
-                batchSize: 7,
-                displayDuration: 10000, // 10 seconds
-                transitionDuration: 1000, // 1 second
-            };
-
-            const galleryEl = document.getElementById('gallery');
-            const loadingIndicatorEl = document.getElementById('loadingIndicator');
-            let availableImages = [];
-            let isTransitioning = false;
-
-            function shuffleArray(array) {
+        class DynamicGallery {
+            constructor() {
+                // Configuration
+                this.totalImages = 33;
+                this.imagesPerBatch = 20;
+                this.displayDuration = 9000; // 9 seconds
+                this.transitionDuration = 1000; // 1 second for fade
+                
+                // Adjust for mobile
+                if (window.innerWidth < 768) {
+                    this.imagesPerBatch = 10;
+                }
+                
+                // State management
+                this.allImages = [];
+                this.availableImages = [];
+                this.currentBatch = [];
+                this.isTransitioning = false;
+                this.cycleInterval = null;
+                
+                // DOM elements
+                this.gallery = document.getElementById('gallery');
+                this.loadingIndicator = document.getElementById('loadingIndicator');
+                
+                // Initialize
+                this.init();
+            }
+            
+            init() {
+                // Generate image list
+                this.generateImageList();
+                
+                // Set up page visibility handling
+                this.setupVisibilityHandling();
+                
+                // Set up image click handling for lightbox
+                this.setupLightbox();
+                
+                // Handle resize events
+                this.setupResizeHandling();
+                
+                // Start the gallery
+                this.start();
+            }
+            
+            generateImageList() {
+                // Create array of all image paths
+                this.allImages = Array.from({length: this.totalImages}, (_, i) => {
+                    const num = i + 1;
+                    return `img${num}.JPG`;
+                });
+                
+                // Initialize available images
+                this.resetAvailableImages();
+            }
+            
+            resetAvailableImages() {
+                this.availableImages = [...this.allImages];
+                this.shuffleArray(this.availableImages);
+            }
+            
+            shuffleArray(array) {
                 for (let i = array.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [array[i], array[j]] = [array[j], array[i]];
                 }
             }
-
-            function getNextBatch() {
-                const batch = [];
-                // If not enough images are available for a full batch, replenish the pool
-                if (availableImages.length < galleryConfig.batchSize) {
-                    availableImages = [...galleryConfig.imagePool];
-                    shuffleArray(availableImages);
-                }
-                // Take a batch from the available images
-                for (let i = 0; i < galleryConfig.batchSize && availableImages.length > 0; i++) {
-                    batch.push(availableImages.pop());
-                }
-                return batch;
+            
+            setupVisibilityHandling() {
+                // Handle page visibility changes
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        this.stop();
+                    } else {
+                        this.restart();
+                    }
+                });
+                
+                // Handle window focus/blur
+                window.addEventListener('focus', () => this.restart());
+                window.addEventListener('blur', () => this.stop());
             }
-
-            async function cycleImages() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                
-                loadingIndicatorEl.classList.add('active');
-
-                // 1. Fade out current images
-                const currentItems = galleryEl.querySelectorAll('.gallery-item');
-                currentItems.forEach(item => item.classList.add('hide'));
-
-                // Wait for fade-out transition to complete
-                await new Promise(resolve => setTimeout(resolve, galleryConfig.transitionDuration));
-                
-                galleryEl.innerHTML = ''; // Clear the gallery
-
-                // 2. Get and display new batch
-                const newBatch = getNextBatch();
-                newBatch.forEach((imageSrc, index) => {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item';
-                    
-                    const img = document.createElement('img');
-                    img.src = imageSrc;
-                    img.alt = 'Gallery Image';
-                    img.setAttribute('data-enlargable', 'true');
-                    img.loading = 'lazy';
-
-                    item.appendChild(img);
-                    galleryEl.appendChild(item);
+            
+            setupResizeHandling() {
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                        // Adjust batch size for mobile
+                        if (window.innerWidth < 768) {
+                            this.imagesPerBatch = 10;
+                        } else {
+                            this.imagesPerBatch = 20;
+                        }
+                    }, 250);
                 });
-
-                loadingIndicatorEl.classList.remove('active');
-
-                // 3. Fade in new images with a slight delay
-                await new Promise(resolve => setTimeout(resolve, 50)); // Short delay for repaint
-                
-                const newItems = galleryEl.querySelectorAll('.gallery-item');
-                newItems.forEach(item => {
-                    item.classList.add('show');
-                });
-                
-                isTransitioning = false;
             }
-
-            // --- Mobile Navigation Toggle ---
-            const sidebarToggle = document.querySelector('.sidebar-toggle');
-            const overlay = document.querySelector('.sidebar-overlay');
-            const body = document.body;
-            function toggleSidebar() { body.classList.toggle('sidebar-open'); }
-            if (sidebarToggle) { sidebarToggle.addEventListener('click', toggleSidebar); }
-            if (overlay) { overlay.addEventListener('click', toggleSidebar); }
-            const navLinks = document.querySelectorAll('.navbar-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 992) { body.classList.remove('sidebar-open'); }
+            
+            setupLightbox() {
+                this.gallery.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'IMG' && e.target.dataset.enlargable) {
+                        this.openLightbox(e.target.src);
+                    }
                 });
-            });
-
-            // --- Lightbox Functionality ---
-            galleryEl.addEventListener('click', (e) => {
-                if (e.target.tagName === 'IMG' && e.target.hasAttribute('data-enlargable')) {
-                    openLightbox(e.target.src);
-                }
-            });
-
-            function openLightbox(src) {
+            }
+            
+            openLightbox(src) {
                 const lightbox = document.createElement('div');
                 lightbox.className = 'lightbox';
+                
                 const img = document.createElement('img');
                 img.src = src;
                 img.alt = 'Enlarged gallery image';
+                
                 const closeBtn = document.createElement('div');
                 closeBtn.className = 'lightbox-close';
-                closeBtn.innerHTML = '&times;';
-                lightbox.append(img, closeBtn);
-
+                closeBtn.innerHTML = '×';
+                
+                lightbox.appendChild(img);
+                lightbox.appendChild(closeBtn);
+                
                 const closeLightbox = () => {
                     lightbox.classList.remove('active');
                     setTimeout(() => lightbox.remove(), 300);
-                    document.removeEventListener('keydown', escapeHandler);
                 };
                 
                 lightbox.onclick = closeLightbox;
+                closeBtn.onclick = closeLightbox;
+                
+                // Prevent image click from closing lightbox
                 img.onclick = (e) => e.stopPropagation();
+                
                 document.body.appendChild(lightbox);
                 
-                requestAnimationFrame(() => lightbox.classList.add('active'));
+                // Trigger animation
+                requestAnimationFrame(() => {
+                    lightbox.classList.add('active');
+                });
                 
-                const escapeHandler = (e) => { if (e.key === 'Escape') closeLightbox(); };
+                // Close on escape key
+                const escapeHandler = (e) => {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                        document.removeEventListener('keydown', escapeHandler);
+                    }
+                };
                 document.addEventListener('keydown', escapeHandler);
             }
-
-            // --- Sidebar Resize Handler ---
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    if (window.innerWidth >= 992) { body.classList.remove('sidebar-open'); }
-                }, 250);
-            });
             
-            // --- Initialize and Start Gallery ---
-            cycleImages(); // Load the first batch immediately
-            setInterval(cycleImages, galleryConfig.displayDuration + galleryConfig.transitionDuration);
+            getNextBatch() {
+                const batch = [];
+                
+                // If we don't have enough available images, reset the pool
+                if (this.availableImages.length < this.imagesPerBatch) {
+                    // Add remaining images to batch first
+                    batch.push(...this.availableImages);
+                    // Reset and shuffle
+                    this.resetAvailableImages();
+                    // Remove images already in batch from available pool
+                    this.availableImages = this.availableImages.filter(img => !batch.includes(img));
+                }
+                
+                // Fill the rest of the batch
+                const needed = this.imagesPerBatch - batch.length;
+                batch.push(...this.availableImages.splice(0, needed));
+                
+                return batch;
+            }
+            
+            async displayBatch(batch) {
+                this.isTransitioning = true;
+                this.showLoadingIndicator();
+                
+                // Clear gallery with fade out
+                await this.fadeOutCurrentImages();
+                
+                // Clear the gallery
+                this.gallery.innerHTML = '';
+                
+                // Create and add new images
+                const imagePromises = batch.map((imagePath, index) => {
+                    return this.createImageElement(imagePath, index);
+                });
+                
+                const elements = await Promise.all(imagePromises);
+                
+                // Add all elements to gallery
+                elements.forEach(el => this.gallery.appendChild(el));
+                
+                // Trigger reflow
+                this.gallery.offsetHeight;
+                
+                // Fade in new images with staggered animation
+                setTimeout(() => {
+                    elements.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.classList.add('show');
+                        }, index * 50); // Faster animation on mobile
+                    });
+                }, 50);
+                
+                this.hideLoadingIndicator();
+                this.isTransitioning = false;
+                this.currentBatch = batch;
+            }
+            
+            createImageElement(imagePath, index) {
+                return new Promise((resolve) => {
+                    const container = document.createElement('div');
+                    container.className = 'gallery-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = imagePath;
+                    img.alt = `Gallery image ${index + 1}`;
+                    img.dataset.enlargable = 'true';
+                    img.className = 'img-responsive';
+                    
+                    // Preload image
+                    img.onload = () => {
+                        container.appendChild(img);
+                        resolve(container);
+                    };
+                    
+                    // Handle error gracefully
+                    img.onerror = () => {
+                        console.warn(`Failed to load image: ${imagePath}`);
+                        // Try alternative paths
+                        const alternativePaths = [
+                            imagePath.toLowerCase(),
+                            imagePath.replace('.JPG', '.jpg'),
+                            imagePath.replace('.JPG', '.jpeg'),
+                            imagePath.replace('.JPG', '.png')
+                        ];
+                        
+                        let pathIndex = 0;
+                        const tryNextPath = () => {
+                            if (pathIndex < alternativePaths.length) {
+                                img.src = alternativePaths[pathIndex++];
+                            } else {
+                                // If all fail, create placeholder
+                                container.style.background = '#222';
+                                container.style.minHeight = '200px';
+                                container.style.display = 'flex';
+                                container.style.alignItems = 'center';
+                                container.style.justifyContent = 'center';
+                                container.innerHTML = '<div style="color: #666; text-align: center; padding: 20px;">Image not available</div>';
+                                resolve(container);
+                            }
+                        };
+                        
+                        img.onerror = tryNextPath;
+                        tryNextPath();
+                    };
+                });
+            }
+            
+            fadeOutCurrentImages() {
+                return new Promise((resolve) => {
+                    const items = this.gallery.querySelectorAll('.gallery-item');
+                    if (items.length === 0) {
+                        resolve();
+                        return;
+                    }
+                    
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('hide');
+                        }, index * 30); // Faster fade on mobile
+                    });
+                    
+                    setTimeout(resolve, this.transitionDuration);
+                });
+            }
+            
+            showLoadingIndicator() {
+                this.loadingIndicator.classList.add('active');
+            }
+            
+            hideLoadingIndicator() {
+                setTimeout(() => {
+                    this.loadingIndicator.classList.remove('active');
+                }, 500);
+            }
+            
+            async cycle() {
+                if (this.isTransitioning) return;
+                
+                const batch = this.getNextBatch();
+                await this.displayBatch(batch);
+            }
+            
+            start() {
+                // Display first batch immediately
+                this.cycle();
+                
+                // Set up interval for subsequent batches
+                this.cycleInterval = setInterval(() => {
+                    this.cycle();
+                }, this.displayDuration + this.transitionDuration);
+            }
+            
+            stop() {
+                if (this.cycleInterval) {
+                    clearInterval(this.cycleInterval);
+                    this.cycleInterval = null;
+                }
+            }
+            
+            restart() {
+                this.stop();
+                this.resetAvailableImages();
+                this.gallery.innerHTML = '';
+                this.start();
+            }
+        }
+        
+        // Initialize gallery when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const gallery = new DynamicGallery();
+            
+            // Expose gallery instance for debugging
+            window.dynamicGallery = gallery;
+        });
+        
+        // Handle resize events for sidebar
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Close sidebar on resize to desktop
+                if (window.innerWidth >= 992) {
+                    document.body.classList.remove('sidebar-open');
+                }
+            }, 250);
         });
     </script>
 </body>
