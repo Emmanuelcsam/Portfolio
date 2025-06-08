@@ -1178,3 +1178,29 @@ h3 {
     width: 125%; /* (100 / 0.8) - This is needed to avoid extra white space on the right */
   }
 }
+
+
+/* --- Mobile Styles (for smaller screens) --- */
+@media (max-width: 768px) {
+  /* 1. Shrink the sidebar itself */
+  .sidebar {
+    width: 80px; /* A much smaller, "shrunken" width */
+    transition: width 0.3s ease; /* Optional: adds a smooth shrinking animation */
+  }
+
+  /* 2. Adjust the main content area to align with the new sidebar */
+  .main-content {
+    margin-left: 80px; /* This new margin must match the new sidebar width */
+  }
+
+  /* 3. Adjust the content INSIDE the sidebar */
+  /* For example, you might want to hide text labels and only show icons */
+  .sidebar .nav-text {
+    display: none; /* Hides any element with the class "nav-text" inside the sidebar */
+  }
+
+  /* You might also want to center any remaining content, like icons */
+  .sidebar .nav-item {
+    justify-content: center;
+  }
+
