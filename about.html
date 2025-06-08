@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <title>Emmanuel Sampson | Physics & Engineering</title>
 
     <meta property="og:title" content="Emmanuel Sampson | Physics & Engineering" />
@@ -21,9 +21,18 @@
 </head>
 
 <body>
-    <button class="sidebar-toggle" aria-label="Toggle navigation">
-        <i class="fa fa-bars"></i>
-    </button>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <img src="logo.png" alt="E Logo" class="mobile-logo">
+        <button class="sidebar-toggle" aria-label="Toggle navigation">
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Navigation Sidebar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <img src="logo.png" id="logo" alt="E Logo" class="logo-animation">
@@ -37,12 +46,12 @@
             </ul>
             <div class="icons-container">
                 <a href="mailto:ecsampson03@gmail.com" class="email-link">
-                    <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i>
+                    <i class="fa fa-envelope-o mr-3"></i>
                 </a>
-                <a href="mailto:ecsampson03@gmail.com" class="email-text">[  ecsampson03@gmail.com  ]</a>
+                <a href="mailto:ecsampson03@gmail.com" class="email-text">ecsampson03@gmail.com</a>
                 <br>
                 <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
-                    <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
                         <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
                     </svg>
                 </a>
@@ -63,13 +72,13 @@
                 </div>
                 <div class="bio-text">
                     <h1 class="hero-title">Emmanuel Sampson</h1>
-                    <p class="hero-subtitle">Physics & Philsophy Student | Creative Professional</p>
+                    <p class="hero-subtitle">Physics & Philosophy Student | Creative Professional</p>
                     <p class="hero-description"></p>
                     <div class="hero-skills">
-                        <span class="skill-badge">Physics Research</span>
-                        <span class="skill-badge">Engineering Design</span>
-                        <span class="skill-badge">Photography</span>
-                        <span class="skill-badge">Leadership</span>
+                        <span class="skill-badge"><span>Physics Research</span></span>
+                        <span class="skill-badge"><span>Engineering Design</span></span>
+                        <span class="skill-badge"><span>Photography</span></span>
+                        <span class="skill-badge"><span>Leadership</span></span>
                     </div>
                 </div>
             </div>
@@ -86,7 +95,7 @@
             <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
         </div>
 
-        <!-- Overview Tab -->
+          <!-- Overview Tab -->
         <div id="overview" class="tab-content active">
             <div class="overview-grid">
                 <div class="overview-card card-animation">
@@ -789,7 +798,37 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    
     <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const body = document.body;
+            
+            function toggleSidebar() {
+                body.classList.toggle('sidebar-open');
+            }
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', toggleSidebar);
+            }
+            
+            // Close sidebar when clicking a link on mobile
+            const navLinks = document.querySelectorAll('.navbar-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        body.classList.remove('sidebar-open');
+                    }
+                });
+            });
+        });
+
         // Tab functionality
         function openTab(evt, tabName) {
             var i, tabcontent, tabbuttons;
@@ -809,6 +848,11 @@
             
             // Trigger animations for the newly opened tab
             animateTabContent(tabName);
+            
+            // Scroll tab button into view on mobile
+            if (window.innerWidth < 768) {
+                evt.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
         }
         
         // Animate tab content
@@ -860,17 +904,19 @@
                 }
             });
         });
-    </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebarToggle = document.querySelector('.sidebar-toggle');
-            if (sidebarToggle) {
-                sidebarToggle.addEventListener('click', () => {
-                    document.body.classList.toggle('sidebar-open');
-                });
-            }
+        
+        // Handle resize events
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Close sidebar on resize to desktop
+                if (window.innerWidth >= 992) {
+                    document.body.classList.remove('sidebar-open');
+                }
+            }, 250);
         });
     </script>
 </body>
 </html>
+
