@@ -89,6 +89,13 @@
                             <span>Creative Writing</span>
                         </a>
                     </div>
+                    <!-- Add this after the hero-skills div -->
+                    <div class="hero-actions">
+                        <button class="download-cv-btn" onclick="generatePDF()">
+                            <i class="fa fa-download"></i>
+                            <span>Download CV as PDF</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             
@@ -743,5 +750,67 @@
             }, 250);
         });
     </script>
+
+    // Enhanced PDF Generation Function that uses existing content
+    function generatePDF() {
+        const downloadBtn = document.querySelector('.download-cv-btn');
+        const originalContent = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> <span>Generating PDF...</span>';
+        downloadBtn.disabled = true;
+
+        // Create a copy of the resume container
+        const resumeContainer = document.querySelector('.resume-container').cloneNode(true);
+        
+        // Remove navigation and unnecessary elements
+        const elementsToRemove = resumeContainer.querySelectorAll('.tab-navigation, .footer, .progress-indicator, .sidebar-toggle, .mobile-header');
+        elementsToRemove.forEach(el => el.remove());
+        
+        // Show all tab content for PDF
+        const tabContents = resumeContainer.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => {
+            tab.style.display = 'block';
+            tab.style.pageBreakAfter = 'auto';
+            tab.style.marginBottom = '40px';
+        });
+
+        // Style adjustments for PDF
+        resumeContainer.style.background = 'white';
+        resumeContainer.style.marginLeft = '0';
+        resumeContainer.style.padding = '20px';
+        resumeContainer.style.width = '100%';
+        resumeContainer.style.maxWidth = '100%';
+
+        // Configure PDF options
+        const opt = {
+            margin: [15, 15, 15, 15],
+            filename: 'Emmanuel_Sampson_CV.pdf',
+            image: { type: 'jpeg', quality: 0.95 },
+            html2canvas: { 
+                scale: 2,
+                letterRendering: true,
+                useCORS: true,
+                scrollY: -window.scrollY
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4', 
+                orientation: 'portrait' 
+            },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        };
+
+        // Generate PDF
+        html2pdf().set(opt).from(resumeContainer).save().then(() => {
+            downloadBtn.innerHTML = originalContent;
+            downloadBtn.disabled = false;
+        }).catch(error => {
+            console.error('Error generating PDF:', error);
+            alert('Sorry, there was an error generating the PDF. Please try again.');
+            downloadBtn.innerHTML = originalContent;
+            downloadBtn.disabled = false;
+        });
+    }
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>

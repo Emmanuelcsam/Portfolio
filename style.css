@@ -1054,3 +1054,81 @@ body.sidebar-open .sidebar-overlay {
     .tab-content { display: block !important; page-break-after: always; }
     a { color: black !important; text-decoration: none !important; }
 }
+/* ===== Download CV Button ===== */
+.hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.download-cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--highlight-color), var(--accent-color));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-main);
+}
+
+.download-cv-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, var(--accent-color), var(--highlight-color));
+}
+
+.download-cv-btn:active {
+    transform: translateY(-1px);
+}
+
+.download-cv-btn i {
+    font-size: 1.2rem;
+}
+
+/* PDF Generation Styles */
+.pdf-content {
+    display: none;
+    background: white;
+    padding: 40px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.pdf-header {
+    border-bottom: 3px solid #1a1a2e;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.pdf-section {
+    margin-bottom: 30px;
+}
+
+.pdf-section h2 {
+    color: #1a1a2e;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Mobile responsiveness for download button */
+@media (max-width: 768px) {
+    .hero-actions {
+        justify-content: center;
+    }
+    
+    .download-cv-btn {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
