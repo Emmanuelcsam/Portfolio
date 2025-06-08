@@ -1170,10 +1170,11 @@ h3 {
     }
 }
 
-/* Make fonts and other elements smaller on screens smaller than 768px */
+/* Scale down the entire body on screens smaller than 768px */
 @media (max-width: 768px) {
   body {
-    font-size: 14px; /* or any other smaller size */
+    transform: scale(0.8); /* a scaling factor of 0.8 (80%) */
+    transform-origin: top left; /* This will scale from the top left corner */
+    width: 125%; /* (100 / 0.8) - This is needed to avoid extra white space on the right */
   }
 }
-
