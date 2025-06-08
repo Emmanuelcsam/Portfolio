@@ -857,10 +857,10 @@
         ];
 
 
-        // --- 2. HTML & CSS FOR PDF ---
+        // --- 2. HTML & CSS FOR PDF (MODIFIED) ---
         const styles = `
             <style>
-                body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; line-height: 1.4; color: #333; }
+                body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; line-height: 1.4; color: #333; }
                 h1 { font-size: 22pt; text-align: center; margin: 0; padding: 0; }
                 .contact-info { text-align: center; margin-bottom: 10px; font-size: 10pt; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
                 .contact-info a { text-decoration: none; color: #0066cc; }
@@ -871,7 +871,7 @@
                 .entry-header .title { font-size: 11pt; font-weight: bold; }
                 .entry-header .date { font-size: 10pt; color: #444; }
                 .entry-subheader { font-style: italic; color: #555; margin-top: -2px; }
-                .entry ul { list-style-type: disc; margin: 5px 0 0 0; padding-left: 20px; }
+                .entry ul { list-style-type: disc; margin: 10px 0 0 0; padding-left: 20px; }
                 .entry li { margin-bottom: 4px; }
                 .project-entry { margin-bottom: 8px; }
                 .project-entry .title { font-weight: bold; }
@@ -950,12 +950,12 @@
             </html>
         `;
 
-        // --- 3. PDF GENERATION ---
+        // --- 3. PDF GENERATION (MODIFIED) ---
         const element = document.createElement('div');
         element.innerHTML = resumeHtml;
 
         const opt = {
-            margin:       0.25, // inches
+            margin:       0.5, // inches
             filename:     'Emmanuel_Sampson_CV.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2, useCORS: true },
