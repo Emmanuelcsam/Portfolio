@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <title>Emmanuel Sampson | Physics & Engineering</title>
 
     <meta property="og:title" content="Emmanuel Sampson | Physics & Engineering" />
@@ -13,7 +13,7 @@
     <meta property="og:image" content="https://www.nasa.gov/wp-content/uploads/2023/03/s69-39529orig.jpg" />
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,16 @@
 </head>
 
 <body>
+    <div class="progress-indicator" id="progressIndicator"></div>
 
+    <header class="mobile-header">
+        <img src="logo.png" alt="E Logo" class="mobile-logo">
+        <button class="sidebar-toggle" aria-label="Toggle navigation">
+            <span></span>
+        </button>
+    </header>
+
+    <div class="sidebar-overlay"></div>
     
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -36,12 +45,12 @@
             </ul>
             <div class="icons-container">
                 <a href="mailto:ecsampson03@gmail.com" class="email-link">
-                    <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i>
+                    <i class="fa fa-envelope-o mr-3"></i>
                 </a>
-                <a href="mailto:ecsampson03@gmail.com" class="email-text">[  ecsampson03@gmail.com  ]</a>
+                <a href="mailto:ecsampson03@gmail.com" class="email-text">ecsampson03@gmail.com</a>
                 <br>
                 <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
-                    <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
                         <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
                     </svg>
                 </a>
@@ -54,7 +63,6 @@
     </nav>
 
     <div class="resume-container">
-        <!-- Hero Section -->
         <div class="hero-section fade-in">
             <div class="bio-container">
                 <div class="bio-image">
@@ -62,19 +70,37 @@
                 </div>
                 <div class="bio-text">
                     <h1 class="hero-title">Emmanuel Sampson</h1>
-                    <p class="hero-subtitle">Physics & Philsophy Student | Creative Professional</p>
-                    <p class="hero-description"></p>
+                    <p class="hero-subtitle">Physics & Philosophy Student | Creative Professional</p>
+                    <p class="hero-description">Bridging the gap between scientific innovation and creative expression through interdisciplinary research, engineering design, and visual storytelling.</p>
                     <div class="hero-skills">
-                        <span class="skill-badge">Physics Research</span>
-                        <span class="skill-badge">Engineering Design</span>
-                        <span class="skill-badge">Photography</span>
-                        <span class="skill-badge">Leadership</span>
+                        <span class="skill-badge"><span>Physics Research</span></span>
+                        <span class="skill-badge"><span>Engineering Design</span></span>
+                        <span class="skill-badge"><span>Photography</span></span>
+                        <span class="skill-badge"><span>Leadership</span></span>
                     </div>
+                </div>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Leadership Roles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Research Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">33+</div>
+                    <div class="stat-label">Creative Works</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Awards</div>
                 </div>
             </div>
         </div>
 
-        <!-- Tab Navigation -->
         <div class="tab-navigation slide-in">
             <button class="tab-button active" onclick="openTab(event, 'overview')">Overview</button>
             <button class="tab-button" onclick="openTab(event, 'education')">Education</button>
@@ -85,7 +111,6 @@
             <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
         </div>
 
-        <!-- Overview Tab -->
         <div id="overview" class="tab-content active">
             <div class="overview-grid">
                 <div class="overview-card card-animation">
@@ -106,62 +131,48 @@
                 <div class="overview-card card-animation">
                     <div class="card-icon"><i class="fa fa-camera"></i></div>
                     <h3>Creative Arts</h3>
-                    <p> Developed experience in photography, filmmaking, creative writing, and music production.</p>
+                    <p>Developed experience in photography, filmmaking, creative writing, and music production.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Education Tab -->
         <div id="education" class="tab-content">
             <div class="resume-section">
                 <h2 class="section-title">Education</h2>
                 <div class="timeline">
-                    <div class="timeline-item fade-in-up">
+                    <div class="timeline-item">
                         <div class="timeline-date">Expected 2026</div>
-                        <div class="timeline-content">
+                        <div class="timeline-content hover-lift">
                             <h3>William & Mary</h3>
                             <div class="subtitle">B.S. in Physics | B.A. in Philosophy</div>
                             <p>Concentration in Engineering Physics and Applied Design</p>
                             <div class="achievements-list">
-                                <div class="achievement-item">
-                                    <i class="fa fa-star"></i> William and Mary Spirit Scholarship Recipient
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fa fa-star"></i> <a href="https://www.wm.edu/as/charlescenter/about/news/upcoming-catron-exhibition-to-celebrate-student-research-artistic-development.php#:~:text=Emmanuel%20Sampson%20%E2%80%9826%2C%20a%20philosophy,previously%20as%20a%20freelance%20writer" target="_blank" rel="noopener noreferrer">William and Mary Catron Scholarship Recipient</a>
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fa fa-star"></i> William and Mary Bosanko Scholarship Recipient
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fa fa-star"></i> <a href="https://www.wm.edu/as/philosophy/student-awards/bosankoscholarship/" target="_blank" rel="noopener noreferrer">William and Mary Bosanko Scholarship Recipient</a>
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fa fa-star"></i> <a href="https://www.wm.edu/as/sharpe/" target="_blank" rel="noopener noreferrer">Sharpe Community Scholar</a>
-                                </div>
-                                <div class="achievement-item">
-                                    <i class="fa fa-microphone"></i> 2025 Prospective Student Keynote Speaker
-                                </div>
+                                <div class="achievement-item"><i class="fa fa-star"></i> William and Mary Spirit Scholarship Recipient</div>
+                                <div class="achievement-item"><i class="fa fa-star"></i> <a href="https://www.wm.edu/as/charlescenter/about/news/upcoming-catron-exhibition-to-celebrate-student-research-artistic-development.php#:~:text=Emmanuel%20Sampson%20%E2%80%9826%2C%20a%20philosophy,previously%20as%20a%20freelance%20writer" target="_blank" rel="noopener noreferrer">William and Mary Catron Scholarship Recipient</a></div>
+                                <div class="achievement-item"><i class="fa fa-star"></i> <a href="https://www.wm.edu/as/philosophy/student-awards/bosankoscholarship/" target="_blank" rel="noopener noreferrer">William and Mary Bosanko Scholarship Recipient</a></div>
+                                <div class="achievement-item"><i class="fa fa-star"></i> <a href="https://www.wm.edu/as/sharpe/" target="_blank" rel="noopener noreferrer">Sharpe Community Scholar</a></div>
+                                <div class="achievement-item"><i class="fa fa-microphone"></i> 2025 Prospective Student Keynote Speaker</div>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item fade-in-up">
+                    <div class="timeline-item">
                         <div class="timeline-date">June - Aug 2024</div>
-                        <div class="timeline-content">
+                        <div class="timeline-content hover-lift">
                             <h3>UCLA School of Theater, Film & Television</h3>
                             <div class="subtitle">Cinematography and Film/Video Production</div>
                             <p>Intensive summer program focusing on film industry, creative producing, and storytelling craft</p>
                         </div>
                     </div>
-                    <div class="timeline-item fade-in-up">
+                    <div class="timeline-item">
                         <div class="timeline-date">2018 - 2022</div>
-                        <div class="timeline-content">
+                        <div class="timeline-content hover-lift">
                             <h3>Colonial Heights High School</h3>
                             <div class="subtitle">Advanced Diploma</div>
                         </div>
                     </div>
-                    <div class="timeline-item fade-in-up">
+                    <div class="timeline-item">
                         <div class="timeline-date">June 2019</div>
-                        <div class="timeline-content">
+                        <div class="timeline-content hover-lift">
                             <h3>Additional Coursework</h3>
                             <ul>
                                 <li>Denison University - Creative Writing</li>
@@ -175,7 +186,6 @@
             </div>
         </div>
 
-        <!-- Experience Tab -->
         <div id="experience" class="tab-content">
             <div class="resume-section">
                 <h2 class="section-title">Professional Experience</h2>
@@ -189,7 +199,6 @@
                             <li>Develop and optimize real-time medical temperature monitoring and logging sensors</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">June 2024 - Present</span>
                         <h3>Creative Production Assistant</h3>
@@ -201,7 +210,6 @@
                             <li>Coordinate talent recruitment and support film & media project development</li>
                         </ul>
                     </div>
-                    
                     <div class="resume-card hover-lift">
                         <span class="date">Oct 2023 - Present</span>
                         <h3>Physics Research Assistant</h3>
@@ -215,7 +223,6 @@
                             <li>Assembled TrIFT 4 time-of-flight mass spectrometry instrument</li>
                         </ul>
                     </div>
-                    
                     <div class="resume-card hover-lift">
                         <span class="date">Jan 2024 - Present</span>
                         <h3>Communications Assistant</h3>
@@ -226,7 +233,6 @@
                             <li>Document diverse scope of Charles Center's programming activities</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Jan 2024 - Jan 2025</span>
                         <h3>Marketing Communications Assistant</h3>
@@ -236,7 +242,6 @@
                             <li>Developed strategic communications materials</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Oct 2022 - June 2024</span>
                         <h3>Head Media Specialist</h3>
@@ -249,7 +254,6 @@
                             <li>Produced instructional videos, improving training efficiency</li>
                         </ul>
                     </div>
-                    
                     <div class="resume-card hover-lift">
                         <span class="date">Oct 2022 - Nov 2023</span>
                         <h3>Student Engineer</h3>
@@ -262,7 +266,6 @@
                             <li>Trained students in Apex, Fusion360, Makerbot, and more</li>
                         </ul>
                     </div>
-                    
                     <div class="resume-card hover-lift">
                         <span class="date">May 2023 - July 2023</span>
                         <h3>Manufacturing Engineer Intern</h3>
@@ -274,7 +277,6 @@
                             <li>Acted as instructor and educator for clients</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Mar 2022 - Sept 2024</span>
                         <h3>Film Producer</h3>
@@ -284,7 +286,6 @@
                             <li>Engaged in creative writing for stories and poems</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Aug 2021 - Aug 2022</span>
                         <h3>Photographer</h3>
@@ -295,7 +296,6 @@
                             <li>Optimized sales statistics and customer experience</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Jan 2023 - June 2025</span>
                         <h3>Freelance Writer</h3>
@@ -305,7 +305,6 @@
                             <li>Create educational content for publications</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Aug 2024 - Jan 2025</span>
                         <h3>Executive Assistant</h3>
@@ -315,7 +314,6 @@
                             <li>Coordinated communications and scheduling</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">May 2024 - June 2024</span>
                         <h3>Photojournalist</h3>
@@ -325,7 +323,6 @@
                             <li>Provided visual journalism for publication</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Mar 2023 - June 2024</span>
                         <h3>Freelance Author</h3>
@@ -335,7 +332,6 @@
                             <li>Acted as consultant for creative projects</li>
                         </ul>
                     </div>
-
                     <div class="resume-card hover-lift">
                         <span class="date">Nov 2021 - May 2022</span>
                         <h3>Private Tutor</h3>
@@ -349,57 +345,47 @@
             </div>
         </div>
 
-        <!-- Research Tab -->
         <div id="research" class="tab-content">
             <div class="resume-section">
                 <h2 class="section-title">Research & Projects</h2>
                 <div class="research-projects">
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>AI Fiber-Optic Defect Analyzer</h3>
-                            <span class="project-status">Weiner Fiber Optics</span>
+                            <span class="project-status">Weinert Fiber Optics</span>
                         </div>
                         <div class="project-content">
-                            <p>Engineered a custom microscope and software program to automatically locate and identify surface defects on fiber-optic end-faces, thereby enhancing transmission efficiency for medical applications like kidney stone removal and cancer treatment. </p>
+                            <p>Engineered a custom microscope and software program to automatically locate and identify surface defects on fiber-optic end-faces, thereby enhancing transmission efficiency for medical applications like kidney stone removal and cancer treatment.</p>
                             <div class="project-tags">
-                                <span class="tag">Signal Processing</span>
-                                <span class="tag">Wildlife Conservation</span>
+                                <span class="tag">Computer Vision</span><span class="tag">Medical Technology</span><span class="tag">Python/C++</span>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
-                            <h3>Time-of-Flight Secondary Ion Mass Spectrometer (TOF-SIMS)<h3>
+                            <h3>Time-of-Flight Secondary Ion Mass Spectrometer (TOF-SIMS)</h3>
                             <span class="project-status">ARC Labs</span>
                         </div>
                         <div class="project-content">
-                            <p>Assmebled a Time-of-Flight secondary ion mass spectrometer that analyzes the chemical composition of the outermost atomic layers of a solid material. </p>
+                            <p>Assembled a Time-of-Flight secondary ion mass spectrometer that analyzes the chemical composition of the outermost atomic layers of a solid material.</p>
                             <div class="project-tags">
-                                <span class="tag">Signal Processing</span>
-                                <span class="tag">Wildlife Conservation</span>
+                                <span class="tag">Mass Spectrometry</span><span class="tag">Surface Analysis</span><span class="tag">Instrumentation</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>Atomistic Spin Dynamics Modeling</h3>
-                            <span class="project-status">Research</span>
+                            <span class="project-status active">Research</span>
                         </div>
                         <div class="project-content">
                             <p>Investigating optimal configurations of iron-nickel and cobalt-iron alloys to enhance magnetization properties as a cost-effective alternative to rare earth metal semiconductors.</p>
                             <div class="project-tags">
-                                <span class="tag">Applied Physics</span>
-                                <span class="tag">Materials Science</span>
-                                <span class="tag">Computational Modeling</span>
+                                <span class="tag">Applied Physics</span><span class="tag">Materials Science</span><span class="tag">Computational Modeling</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>Bird Sensor Technology</h3>
                             <span class="project-status">Hackathon Winner</span>
@@ -407,14 +393,11 @@
                         <div class="project-content">
                             <p>Developed an innovative sensor system that detects bird-window collisions through frequency analysis, winning the William and Mary 2024 Hackathon.</p>
                             <div class="project-tags">
-                                <span class="tag">Signal Processing</span>
-                                <span class="tag">Wildlife Conservation</span>
-                                <span class="tag">IoT</span>
+                                <span class="tag">Signal Processing</span><span class="tag">Wildlife Conservation</span><span class="tag">IoT</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>Radio-frequency Mechanical Analyzer</h3>
                             <span class="project-status">Innovation</span>
@@ -422,14 +405,11 @@
                         <div class="project-content">
                             <p>Created a radio sensor capable of detecting and locating mechanical items not intentionally transmitting signals, such as fans or turbines.</p>
                             <div class="project-tags">
-                                <span class="tag">RF Engineering</span>
-                                <span class="tag">Signal Detection</span>
-                                <span class="tag">Security Applications</span>
+                                <span class="tag">RF Engineering</span><span class="tag">Signal Detection</span><span class="tag">Security Applications</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>Low Angle Reflectivity Experiment</h3>
                             <span class="project-status">Collaboration</span>
@@ -437,72 +417,47 @@
                         <div class="project-content">
                             <p>Developed electronic instruments for measuring infrared light reflectivity at shallow angles on variable materials in collaboration with CERN, NIST, and CALTECH.</p>
                             <div class="project-tags">
-                                <span class="tag">Optics</span>
-                                <span class="tag">Instrumentation</span>
-                                <span class="tag">International Collaboration</span>
+                                <span class="tag">Optics</span><span class="tag">Instrumentation</span><span class="tag">International Collaboration</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
-                            <h3>
-                                <a href="https://devpost.com/software/safe-sound-bs52e0" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                                    Vital-Lift: Safe & Sound
-                                </a>
-                            </h3>
+                            <h3><a href="https://devpost.com/software/safe-sound-bs52e0" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Vital-Lift: Safe & Sound</a></h3>
                             <span class="project-status">Hoya Hacks 2025</span>
                         </div>
                         <div class="project-content">
-                            <p>Developed a simulation for drones and eVTOLs to autonomously route life-saving medical supplies, navigating around obstacles like traffic and weather to improve delivery times and patient safety. </p>
+                            <p>Developed a simulation for drones and eVTOLs to autonomously route life-saving medical supplies, navigating around obstacles like traffic and weather to improve delivery times and patient safety.</p>
                             <div class="project-tags">
-                                <span class="tag">Blender</span>
-                                <span class="tag">Optimization</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Autonomous Systems</span>
+                                <span class="tag">Blender</span><span class="tag">Optimization</span><span class="tag">Python</span><span class="tag">Autonomous Systems</span>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
-                            <h3>
-                                <a href="https://devpost.com/software/robogogo" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                                    Sustainable Species and Habitat Sensor (SSHS)
-                                </a>
-                            </h3>
+                            <h3><a href="https://devpost.com/software/robogogo" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Sustainable Species and Habitat Sensor (SSHS)</a></h3>
                             <span class="project-status">TribeHacks IX Spring 2024</span>
                         </div>
                         <div class="project-content">
-                            <p>Created a sensor using Arduino to detect minor changes in humidity and temperature, designed to help preserve sensitive species and organisms within small, controlled environments. </p>
+                            <p>Created a sensor using Arduino to detect minor changes in humidity and temperature, designed to help preserve sensitive species and organisms within small, controlled environments.</p>
                             <div class="project-tags">
-                                <span class="tag">Environmental Sensor</span>
-                                <span class="tag">Arduino</span>
-                                <span class="tag">Sustainability</span>
+                                <span class="tag">Environmental Sensor</span><span class="tag">Arduino</span><span class="tag">Sustainability</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
-                            <h3>
-                                <a href="https://devpost.com/software/shell-savings" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                                    Shell Savings
-                                </a>
-                            </h3>
+                            <h3><a href="https://devpost.com/software/shell-savings" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">Shell Savings</a></h3>
                             <span class="project-status">Hoya Hacks 2023</span>
                         </div>
                         <div class="project-content">
                             <p>Co-developed a web application to help Gen Z and younger individuals visually understand and begin planning for retirement through small, manageable steps.</p>
                             <div class="project-tags">
-                                <span class="tag">Web Development</span>
-                                <span class="tag">Financial Planning</span>
+                                <span class="tag">Web Development</span><span class="tag">Financial Planning</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>Williamsburg STEM Symposium</h3>
                             <span class="project-status">Event Creation</span>
@@ -510,14 +465,11 @@
                         <div class="project-content">
                             <p>Created and hosted William & Mary's first annual STEM symposium, featuring a panel of tech and engineering professionals to speak and connect with the community.</p>
                             <div class="project-tags">
-                                <span class="tag">Event Management</span>
-                                <span class="tag">STEM Outreach</span>
-                                <span class="tag">Community Engagement</span>
+                                <span class="tag">Event Management</span><span class="tag">STEM Outreach</span><span class="tag">Community Engagement</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>Restructured Lab 168</h3>
                             <span class="project-status">Laboratory Design</span>
@@ -525,14 +477,11 @@
                         <div class="project-content">
                             <p>Transformed an underutilized laboratory into a fully operational facility by managing the equipment budget and redesigning the space to optimize workflow.</p>
                             <div class="project-tags">
-                                <span class="tag">Laboratory Management</span>
-                                <span class="tag">Workflow Optimization</span>
-                                <span class="tag">Infrastructure</span>
+                                <span class="tag">Laboratory Management</span><span class="tag">Workflow Optimization</span><span class="tag">Infrastructure</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>Keynreed</h3>
                             <span class="project-status">Web Development</span>
@@ -540,24 +489,19 @@
                         <div class="project-content">
                             <p>Developed an arts outsourcing and consultation website to better connect companies to creative professionals.</p>
                             <div class="project-tags">
-                                <span class="tag">Web Development</span>
-                                <span class="tag">Creative Services</span>
-                                <span class="tag">Business Development</span>
+                                <span class="tag">Web Development</span><span class="tag">Creative Services</span><span class="tag">Business Development</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="project-card hover-lift">
+                    <div class="project-card hover-float">
                         <div class="project-header">
                             <h3>WeMake Film Makers</h3>
                             <span class="project-status">Film Production</span>
                         </div>
                         <div class="project-content">
-                            <p>Directed films and contributed to the progress of a filmmaking club at the College of William & Mary, earning acknowlegment at the Ampersand International Arts Festival.</p>
+                            <p>Directed films and contributed to the progress of a filmmaking club at the College of William & Mary, earning acknowledgment at the Ampersand International Arts Festival.</p>
                             <div class="project-tags">
-                                <span class="tag">Film Direction</span>
-                                <span class="tag">Creative Arts</span>
-                                <span class="tag">Festival Recognition</span>
+                                <span class="tag">Film Direction</span><span class="tag">Creative Arts</span><span class="tag">Festival Recognition</span>
                             </div>
                         </div>
                     </div>
@@ -565,81 +509,63 @@
             </div>
         </div>
 
-<div id="achievements" class="tab-content">
-    <div class="resume-section">
-        <h2 class="section-title">Leadership & Achievements</h2>
-        
-        <div class="achievements-grid-v2">
-
-            <div class="ach-card-v2 leadership-card-v2">
-                <div class="ach-card-header-v2">
-                    <i class="fa fa-users"></i>
-                    <h3>Leadership Positions</h3>
-                </div>
-                <div class="ach-card-body-v2">
-                    <div class="leadership-grid-v2">
-                        <div class="leadership-item-v2"><strong>President:</strong><span>William and Mary Robotics Club (2 yrs)</span></div>
-                        <div class="leadership-item-v2"><strong>President:</strong><span>Data Science Society (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>President:</strong><span>Tech Executive Association (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>President:</strong><span>Photo Club (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Marketing Head:</strong><span>Tribe Innovation (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Director of Public Relations:</strong><span>Association of Computing Machinery (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Outreach Director:</strong><span>Society of Physics Students (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Outreach Director:</strong><span>Association of Computing Machinery (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Challenge Host:</strong><span>WM ACM TribeHacks (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Sponsorship Chair:</strong><span><a href="https://www.wm.edu/as/computerscience/about-contactus/news/hacks-x-raised-the-bar.php#:~:text=The%20event%20is%20entirely%20student,Lead%20Jackson%20Kubin%20added%2C%20%E2%80%9CI%E2%80%99m" target="_blank" rel="noopener noreferrer">WM ACM &Hacks (1 yr)</a></span></div>
-                        <div class="leadership-item-v2"><strong>Producer and MC:</strong><span>WM Tech Fusion/STEM Symposium (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Band Manager:</strong><span>WM Middle Eastern Music Ensemble (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Film Director:</strong><span>WeMake Filmmakers (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Publicity Director:</strong><span>WM Noetica Journal (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Marketing Lead:</strong><span>WM Tribe Innovation (1 yr)</span></div>
-                        <div class="leadership-item-v2"><strong>Youth Leader:</strong><span>Youth Advisory Council (3yrs)</span></div>
+        <div id="achievements" class="tab-content">
+            <div class="resume-section">
+                <h2 class="section-title">Leadership & Achievements</h2>
+                <div class="achievements-grid-v2">
+                    <div class="ach-card-v2 leadership-card-v2">
+                        <div class="ach-card-header-v2"><i class="fa fa-users"></i><h3>Leadership Positions</h3></div>
+                        <div class="ach-card-body-v2">
+                            <div class="leadership-grid-v2">
+                                <div class="leadership-item-v2"><strong>President:</strong><span>William and Mary Robotics Club (2 yrs)</span></div>
+                                <div class="leadership-item-v2"><strong>President:</strong><span>Data Science Society (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>President:</strong><span>Tech Executive Association (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>President:</strong><span>Photo Club (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Marketing Head:</strong><span>Tribe Innovation (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Director of Public Relations:</strong><span>Association of Computing Machinery (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Outreach Director:</strong><span>Society of Physics Students (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Outreach Director:</strong><span>Association of Computing Machinery (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Challenge Host:</strong><span>WM ACM TribeHacks (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Sponsorship Chair:</strong><span><a href="https://www.wm.edu/as/computerscience/about-contactus/news/hacks-x-raised-the-bar.php#:~:text=The%20event%20is%20entirely%20student,Lead%20Jackson%20Kubin%20added%2C%20%E2%80%9CI%E2%80%99m" target="_blank" rel="noopener noreferrer">WM ACM &Hacks (1 yr)</a></span></div>
+                                <div class="leadership-item-v2"><strong>Producer and MC:</strong><span>WM Tech Fusion/STEM Symposium (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Band Manager:</strong><span>WM Middle Eastern Music Ensemble (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Film Director:</strong><span>WeMake Filmmakers (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Publicity Director:</strong><span>WM Noetica Journal (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Marketing Lead:</strong><span>WM Tribe Innovation (1 yr)</span></div>
+                                <div class="leadership-item-v2"><strong>Youth Leader:</strong><span>Youth Advisory Council (3yrs)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ach-card-v2 awards-card-v2">
+                        <div class="ach-card-header-v2"><i class="fa fa-trophy"></i><h3>Awards & Recognition</h3></div>
+                        <div class="ach-card-body-v2">
+                            <div class="accolade-item-v2"><i class="fa fa-trophy"></i><span>William and Mary Spring 2024 Judo Tournament Winner</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-cogs"></i><span>William and Mary 2024 Hackathon Winner</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-shield"></i><span>Marine Corps Officer Candidate School Attendant</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-microphone"></i><span>Lead Producer - Williamsburg STEM Symposium</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-line-chart"></i><span>Top Sales Associate - JC Penny Portrait Studio</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-film"></i><span>Film Recognition - Ampersand International Arts Festival</span></div>
+                        </div>
+                    </div>
+                    <div class="ach-card-v2 certs-card-v2">
+                        <div class="ach-card-header-v2"><i class="fa fa-certificate"></i><h3>Certifications</h3></div>
+                        <div class="ach-card-body-v2">
+                            <div class="accolade-item-v2"><i class="fa fa-bar-chart"></i><span>From Excel to Tableau</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-bar-chart"></i><span>Everybody's Introduction to Tableau (2022)</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-bar-chart"></i><span>Tableau for Data Scientists</span></div>
+                            <div class="accolade-item-v2"><i class="fa fa-leaf"></i><span>Corporate Finance: Environmental, Social, and Governance (ESG)</span></div>
+                        </div>
+                    </div>
+                    <div class="ach-card-v2 volunteer-card-v2">
+                        <div class="ach-card-header-v2"><i class="fa fa-handshake-o"></i><h3>Volunteer Service</h3></div>
+                        <div class="ach-card-body-v2">
+                            <div class="accolade-item-v2"><i class="fa fa-rocket"></i><span><strong>NASA Langley Research Center</strong> - Open House Volunteer, organized flow of incoming guests.</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="ach-card-v2 awards-card-v2">
-                 <div class="ach-card-header-v2">
-                    <i class="fa fa-trophy"></i>
-                    <h3>Awards & Recognition</h3>
-                </div>
-                <div class="ach-card-body-v2">
-                    <div class="accolade-item-v2"><i class="fa fa-trophy"></i><span>William and Mary Spring 2024 Judo Tournament Winner</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-cogs"></i><span>William and Mary 2024 Hackathon Winner</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-shield"></i><span>Marine Corps Officer Candidate School Attendant</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-microphone"></i><span>Lead Producer - Williamsburg STEM Symposium</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-line-chart"></i><span>Top Sales Associate - JC Penny Portrait Studio</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-film"></i><span>Film Recognition - Ampersand International Arts Festival</span></div>
-                </div>
-            </div>
-
-            <div class="ach-card-v2 certs-card-v2">
-                 <div class="ach-card-header-v2">
-                    <i class="fa fa-certificate"></i>
-                    <h3>Certifications</h3>
-                </div>
-                <div class="ach-card-body-v2">
-                    <div class="accolade-item-v2"><i class="fa fa-bar-chart"></i><span>From Excel to Tableau</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-bar-chart"></i><span>Everybody's Introduction to Tableau (2022)</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-bar-chart"></i><span>Tableau for Data Scientists</span></div>
-                    <div class="accolade-item-v2"><i class="fa fa-leaf"></i><span>Corporate Finance: Environmental, Social, and Governance (ESG)</span></div>
-                </div>
-            </div>
-
-            <div class="ach-card-v2 volunteer-card-v2">
-                <div class="ach-card-header-v2">
-                   <i class="fa fa-handshake-o"></i>
-                   <h3>Volunteer Service</h3>
-               </div>
-               <div class="ach-card-body-v2">
-                   <div class="accolade-item-v2"><i class="fa fa-rocket"></i><span><strong>NASA Langley Research Center</strong> - Open House Volunteer, organized flow of incoming guests.</span></div>
-               </div>
-           </div>
         </div>
-    </div>
-</div>
 
-        <!-- Skills Tab -->
         <div id="skills" class="tab-content">
             <div class="resume-section">
                 <h2 class="section-title">Technical Skills & Languages</h2>
@@ -647,104 +573,48 @@
                     <div class="skill-category">
                         <h3>Programming Languages</h3>
                         <div class="skill-grid">
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">MATLAB</span>
-                            <span class="skill-badge">Java</span>
-                            <span class="skill-badge">JavaScript</span>
-                            <span class="skill-badge">C++</span>
+                            <span class="skill-badge"><span>Python</span></span><span class="skill-badge"><span>MATLAB</span></span><span class="skill-badge"><span>Java</span></span><span class="skill-badge"><span>JavaScript</span></span><span class="skill-badge"><span>C++</span></span>
                         </div>
                     </div>
-                    
                     <div class="skill-category">
                         <h3>Technical Tools</h3>
                         <div class="skill-grid">
-                            <span class="skill-badge">Adobe Creative Suite</span>
-                            <span class="skill-badge">Autodesk Suite</span>
-                            <span class="skill-badge">TinkerCAD</span>
-                            <span class="skill-badge">Tableau</span>
-                            <span class="skill-badge">Microsoft Office</span>
-                            <span class="skill-badge">Google Suite</span>
-                            <span class="skill-badge">CAD Software</span>
-                            <span class="skill-badge">3D Printing</span>
-                            <span class="skill-badge">Fusion360</span>
-                            <span class="skill-badge">Apex</span>
-                            <span class="skill-badge">Makerbot</span>
-                            <span class="skill-badge">Jira Service Manager</span>
+                            <span class="skill-badge"><span>Adobe Creative Suite</span></span><span class="skill-badge"><span>Autodesk Suite</span></span><span class="skill-badge"><span>TinkerCAD</span></span><span class="skill-badge"><span>Tableau</span></span><span class="skill-badge"><span>Microsoft Office</span></span><span class="skill-badge"><span>Google Suite</span></span><span class="skill-badge"><span>CAD Software</span></span><span class="skill-badge"><span>3D Printing</span></span><span class="skill-badge"><span>Fusion360</span></span><span class="skill-badge"><span>Apex</span></span><span class="skill-badge"><span>Makerbot</span></span><span class="skill-badge"><span>Jira Service Manager</span></span>
                         </div>
                     </div>
-
                     <div class="skill-category">
                         <h3>Specialized Skills</h3>
                         <div class="skill-grid">
-                            <span class="skill-badge">Computer Vision</span>
-                            <span class="skill-badge">Engineering Design</span>
-                            <span class="skill-badge">Fiber Optics</span>
-                            <span class="skill-badge">Cinematography</span>
-                            <span class="skill-badge">Signal Processing</span>
-                            <span class="skill-badge">RF Engineering</span>
-                            <span class="skill-badge">Data Acquisition</span>
+                            <span class="skill-badge"><span>Computer Vision</span></span><span class="skill-badge"><span>Engineering Design</span></span><span class="skill-badge"><span>Fiber Optics</span></span><span class="skill-badge"><span>Cinematography</span></span><span class="skill-badge"><span>Signal Processing</span></span><span class="skill-badge"><span>RF Engineering</span></span><span class="skill-badge"><span>Data Acquisition</span></span><span class="skill-badge"><span>Mass Spectrometry</span></span>
                         </div>
                     </div>
-                    
                     <div class="skill-category">
                         <h3>Communication & Creative Skills</h3>
                         <div class="skill-grid">
-                            <span class="skill-badge">Written Communication</span>
-                            <span class="skill-badge">Verbal Communication</span>
-                            <span class="skill-badge">Interviewing</span>
-                            <span class="skill-badge">Multimedia Storytelling</span>
-                            <span class="skill-badge">Photography</span>
-                            <span class="skill-badge">Videography</span>
-                            <span class="skill-badge">Creative Writing</span>
-                            <span class="skill-badge">Event Management</span>
+                            <span class="skill-badge"><span>Written Communication</span></span><span class="skill-badge"><span>Verbal Communication</span></span><span class="skill-badge"><span>Interviewing</span></span><span class="skill-badge"><span>Multimedia Storytelling</span></span><span class="skill-badge"><span>Photography</span></span><span class="skill-badge"><span>Videography</span></span><span class="skill-badge"><span>Creative Writing</span></span><span class="skill-badge"><span>Event Management</span></span>
                         </div>
                     </div>
-
                     <div class="skill-category">
                         <h3>Languages</h3>
                         <div class="language-cards">
-                            <div class="language-card">
-                                <div class="language-flag">🇺🇸</div>
-                                <h4>English</h4>
-                            </div>
-                            <div class="language-card">
-                                <div class="language-flag">🇳🇬</div>
-                                <h4>Igbo</h4>
-                            </div>
-                            <div class="language-card">
-                                <div class="language-flag">🇯🇵</div>
-                                <h4>Japanese</h4>
-                            </div>
+                            <div class="language-card"><div class="language-flag">🇺🇸</div><h4>English</h4><p>Native</p></div>
+                            <div class="language-card"><div class="language-flag">🇳🇬</div><h4>Igbo</h4><p>Conversational</p></div>
+                            <div class="language-card"><div class="language-flag">🇯🇵</div><h4>Japanese</h4><p>Basic</p></div>
                         </div>
                     </div>
-                    
                     <div class="skill-category">
                         <h3>Musical Instruments</h3>
                         <div class="instrument-grid">
-                            <div class="instrument-card">
-                                <i class="fa fa-music"></i>
-                                <span>Piano</span>
-                            </div>
-                            <div class="instrument-card">
-                                <i class="fa fa-music"></i>
-                                <span>Violin</span>
-                            </div>
-                            <div class="instrument-card">
-                                <i class="fa fa-music"></i>
-                                <span>Guitar</span>
-                            </div>
-                            <div class="instrument-card">
-                                <i class="fa fa-microphone"></i>
-                                <span>Voice</span>
-                            </div>
+                            <div class="instrument-card"><i class="fa fa-music"></i><span>Piano</span></div>
+                            <div class="instrument-card"><i class="fa fa-music"></i><span>Violin</span></div>
+                            <div class="instrument-card"><i class="fa fa-music"></i><span>Guitar</span></div>
+                            <div class="instrument-card"><i class="fa fa-microphone"></i><span>Voice</span></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        <!-- Contact Tab -->
         <div id="contact" class="tab-content">
             <div class="contact-section">
                 <h2 class="section-title">Get In Touch</h2>
@@ -752,34 +622,20 @@
                     <div class="contact-info">
                         <h3>Let's Connect</h3>
                         <p>I'm always open to new opportunities, creative collaborations, or just having a great conversation about physics, philosophy, or photography.</p>
-                        
                         <div class="contact-methods">
-                            <a href="mailto:ecsampson03@gmail.com" class="contact-method">
-                                <i class="fa fa-envelope"></i>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>ecsampson03@gmail.com</p>
-                                </div>
-                            </a>
-                            
-                            <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" class="contact-method">
-                                <i class="fa fa-linkedin"></i>
-                                <div>
-                                    <h4>LinkedIn</h4>
-                                    <p>linkedin.com/in/emmanuel-sampson</p>
-                                </div>
-                            </a>
-                            
+                            <a href="mailto:ecsampson03@gmail.com" class="contact-method"><i class="fa fa-envelope"></i><div><h4>Email</h4><p>ecsampson03@gmail.com</p></div></a>
+                            <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" class="contact-method"><i class="fa fa-linkedin"></i><div><h4>LinkedIn</h4><p>linkedin.com/in/emmanuel-sampson</p></div></a>
+                            <a href="tel:+17579091248" class="contact-method"><i class="fa fa-phone"></i><div><h4>Phone</h4><p>(757) 909-1248</p></div></a>
                         </div>
                     </div>
-                    
                     <div class="contact-cta">
                         <h3>Photography Services</h3>
                         <p>Available for professional photography services including events, portraits, and creative projects.</p>
-                        <a href="mailto:ecsampson03@gmail.com" class="cta-button">
-                            <span>Book a Session</span>
-                            <i class="fa fa-arrow-right"></i>
-                        </a>
+                        <a href="mailto:ecsampson03@gmail.com?subject=Photography%20Inquiry" class="cta-button"><span>Book a Session</span><i class="fa fa-arrow-right"></i></a>
+                        <div class="section-divider"></div>
+                        <h3>Research Collaboration</h3>
+                        <p>Interested in collaborating on physics research or engineering projects? Let's discuss how we can work together.</p>
+                        <a href="mailto:ecsampson03@gmail.com?subject=Research%20Collaboration" class="cta-button"><span>Discuss Project</span><i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -788,87 +644,97 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    
     <script>
+        // Progress indicator
+        function updateProgressIndicator() {
+            const container = document.querySelector('.resume-container');
+            const contentHeight = container.scrollHeight - window.innerHeight;
+            const scrolled = window.scrollY;
+            const progress = Math.min((scrolled / contentHeight) * 100, 100);
+            document.getElementById('progressIndicator').style.transform = `scaleX(${progress / 100})`;
+        }
+        window.addEventListener('scroll', updateProgressIndicator);
+        window.addEventListener('resize', updateProgressIndicator);
+        
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const body = document.body;
+            
+            function toggleSidebar() {
+                body.classList.toggle('sidebar-open');
+            }
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+            if (overlay) {
+                overlay.addEventListener('click', toggleSidebar);
+            }
+            const navLinks = document.querySelectorAll('.navbar-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        body.classList.remove('sidebar-open');
+                    }
+                });
+            });
+        });
+
         // Tab functionality
         function openTab(evt, tabName) {
             var i, tabcontent, tabbuttons;
-            
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+                tabcontent[i].classList.remove("active");
             }
-            
             tabbuttons = document.getElementsByClassName("tab-button");
             for (i = 0; i < tabbuttons.length; i++) {
-                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+                tabbuttons[i].classList.remove("active");
             }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
             
-            document.getElementById(tabName).className += " active";
-            evt.currentTarget.className += " active";
-            
-            // Trigger animations for the newly opened tab
-            animateTabContent(tabName);
-        }
-        
-        // Animate tab content
-        function animateTabContent(tabName) {
-            const content = document.getElementById(tabName);
-            const elements = content.querySelectorAll('.fade-in-up, .card-animation, .hover-lift, .skill-progress');
-            
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
+            if (window.innerWidth < 768) {
+                evt.currentTarget.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateProgressIndicator();
         }
         
         // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
         
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
         
         // Observe all animated elements
         document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-up, .slide-in, .card-animation');
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in, .timeline-item, .card-animation, .ach-card-v2, .skill-category, .overview-card, .project-card');
             animatedElements.forEach(el => observer.observe(el));
-            
-            // Initial animation for overview tab
-            setTimeout(() => animateTabContent('overview'), 100);
+            document.getElementById('overview').classList.add('active');
         });
         
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Handle resize events
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (window.innerWidth >= 992) {
+                    document.body.classList.remove('sidebar-open');
                 }
-            });
-        });
-    </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebarToggle = document.querySelector('.sidebar-toggle');
-            if (sidebarToggle) {
-                sidebarToggle.addEventListener('click', () => {
-                    document.body.classList.toggle('sidebar-open');
-                });
-            }
+            }, 250);
         });
     </script>
 </body>
