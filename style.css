@@ -295,7 +295,7 @@ h3 {
     overflow: hidden;
 }
 
-.skill-badge::before {
+/*.skill-badge::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -313,7 +313,7 @@ h3 {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
-
+*/
 .skill-badge:hover::before {
     width: 150%;
     height: 150%;
