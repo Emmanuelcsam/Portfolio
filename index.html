@@ -1,28 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Arts Portfolio</title>
+    <title>Arts Portfolio - Dynamic Gallery</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  </head>
+    <style>
+        /* Enhanced styles for dynamic gallery */
+        #gallery {
+            position: relative;
+            min-height: 100vh;
+            background: #000;
+            padding: 20px;
+            margin-left: 250px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            align-content: start;
+        }
 
-  
-  <body>
+        .gallery-item {
+            position: relative;
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+            background: #111;
+        }
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Gallery -->
+        .gallery-item.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .gallery-item.hide {
+            opacity: 0;
+            transform: scale(0.9) translateY(-20px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Loading indicator */
+        .loading-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-indicator.active {
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #gallery {
+                margin-left: 0;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 10px;
+                grid-gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation (unchanged) -->
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <img src="logo.png" id="logo" alt="E Logo">
@@ -34,90 +104,300 @@
                     <a class="hover-underline-animation" href="about.html">About the Artist</a>
                 </li>
             </ul>
-        <div class="icons-container">
-            <a href="mailto:ecsampson03@gmail.com">
-              <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i></a></svg>
-              <a href="mailto:ecsampson03@gmail.com">[  ecsampson03@gmail.com  ]</a>
-              <br>
-            <a href="https://www.linkedin.com/in/emmanuel-sampson-0b0483225/" target="_blank" rel="noopener noreferrer">
-                <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path> linkedin.com/in/arianna-lagamma</i></a></svg>
+            <div class="icons-container">
+                <a href="mailto:ecsampson03@gmail.com">
+                    <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i>
+                </a>
+                <a href="mailto:ecsampson03@gmail.com">[  ecsampson03@gmail.com  ]</a>
+                <br>
+                <a href="https://www.linkedin.com/in/emmanuel-sampson/" target="_blank" rel="noopener noreferrer">
+                    <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/emmanuel-sampson/" class="linkedin-text">linkedin.com/in/emmanuel-sampson</a>
+            </div>
         </div>
-      </div>
     </nav>
 
+    <!-- Dynamic Gallery Container -->
+    <div id="gallery" class="container-fluid"></div>
     
-    <div id="gallery" class="container-fluid">  
-        <img src="img1.JPG" class="img-responsive" data-enlargable alt="none">
-        <img src="img4.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img2.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img3.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img5.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img6.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img7.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img8.JPG" class="img-responsive" data-enlargable alt="none">
-        <img src="img9.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img10.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img11.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img12.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img13.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img14.JPG" class="card img-responsive" data-enlargable alt="none">
+    <!-- Loading Indicator -->
+    <div class="loading-indicator" id="loadingIndicator">Loading new images...</div>
 
-        <img src="img15.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img16.JPG" class="img-responsive" data-enlargable alt="none">
-        <img src="img17.JPG" class="img-responsive" data-enlargable alt="none">
-        <img src="img18.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img19.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img20.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img21.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img22.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img23.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img24.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img25.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img26.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img27.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img28.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img29.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img30.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img31.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img32.JPG" class="card img-responsive" data-enlargable alt="none">
-        <img src="img33.JPG" class="card img-responsive" data-enlargable alt="none">
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
-      
-      </div>
-      
-
-      
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- JavaScript -->
-<script>
-$(document).ready(function() {
-    $('img[data-enlargable]').addClass('img-enlargable').click(function() {
-        var src = $(this).attr('src');
-        $('<div>').css({
-            background: 'RGBA(0,0,0,.5) url('+src+') no-repeat center',
-            backgroundSize: 'contain',
-            width:'100%', height:'100%',
-            position:'fixed',
-            zIndex:'10000',
-            top:'0', left:'0',
-            cursor: 'zoom-out'
-        }).click(function() {
-            $(this).remove();
-        }).appendTo('body');
-    });
-});
-</script>
-  </body>
-</html>
-
-</script>
-  </body>
+    <script>
+        class DynamicGallery {
+            constructor() {
+                // Configuration
+                this.totalImages = 33;
+                this.imagesPerBatch = 8;
+                this.displayDuration = 9000; // 9 seconds
+                this.transitionDuration = 1000; // 1 second for fade
+                
+                // State management
+                this.allImages = [];
+                this.availableImages = [];
+                this.currentBatch = [];
+                this.isTransitioning = false;
+                this.cycleInterval = null;
+                
+                // DOM elements
+                this.gallery = document.getElementById('gallery');
+                this.loadingIndicator = document.getElementById('loadingIndicator');
+                
+                // Initialize
+                this.init();
+            }
+            
+            init() {
+                // Generate image list
+                this.generateImageList();
+                
+                // Set up page visibility handling
+                this.setupVisibilityHandling();
+                
+                // Set up image click handling for lightbox
+                this.setupLightbox();
+                
+                // Start the gallery
+                this.start();
+            }
+            
+            generateImageList() {
+                // Create array of all image paths
+                this.allImages = Array.from({length: this.totalImages}, (_, i) => {
+                    const num = i + 1;
+                    return `img${num}.JPG`;
+                });
+                
+                // Initialize available images
+                this.resetAvailableImages();
+            }
+            
+            resetAvailableImages() {
+                this.availableImages = [...this.allImages];
+                this.shuffleArray(this.availableImages);
+            }
+            
+            shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+            
+            setupVisibilityHandling() {
+                // Handle page visibility changes
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        this.stop();
+                    } else {
+                        this.restart();
+                    }
+                });
+                
+                // Handle window focus/blur
+                window.addEventListener('focus', () => this.restart());
+                window.addEventListener('blur', () => this.stop());
+            }
+            
+            setupLightbox() {
+                this.gallery.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'IMG' && e.target.dataset.enlargable) {
+                        const src = e.target.src;
+                        const lightbox = document.createElement('div');
+                        lightbox.style.cssText = `
+                            background: RGBA(0,0,0,.9) url(${src}) no-repeat center;
+                            background-size: contain;
+                            width: 100%;
+                            height: 100%;
+                            position: fixed;
+                            z-index: 10000;
+                            top: 0;
+                            left: 0;
+                            cursor: zoom-out;
+                        `;
+                        lightbox.onclick = () => lightbox.remove();
+                        document.body.appendChild(lightbox);
+                    }
+                });
+            }
+            
+            getNextBatch() {
+                const batch = [];
+                
+                // If we don't have enough available images, reset the pool
+                if (this.availableImages.length < this.imagesPerBatch) {
+                    // Add remaining images to batch first
+                    batch.push(...this.availableImages);
+                    // Reset and shuffle
+                    this.resetAvailableImages();
+                    // Remove images already in batch from available pool
+                    this.availableImages = this.availableImages.filter(img => !batch.includes(img));
+                }
+                
+                // Fill the rest of the batch
+                const needed = this.imagesPerBatch - batch.length;
+                batch.push(...this.availableImages.splice(0, needed));
+                
+                return batch;
+            }
+            
+            async displayBatch(batch) {
+                this.isTransitioning = true;
+                this.showLoadingIndicator();
+                
+                // Clear gallery with fade out
+                await this.fadeOutCurrentImages();
+                
+                // Clear the gallery
+                this.gallery.innerHTML = '';
+                
+                // Create and add new images
+                const imagePromises = batch.map((imagePath, index) => {
+                    return this.createImageElement(imagePath, index);
+                });
+                
+                const elements = await Promise.all(imagePromises);
+                
+                // Add all elements to gallery
+                elements.forEach(el => this.gallery.appendChild(el));
+                
+                // Trigger reflow
+                this.gallery.offsetHeight;
+                
+                // Fade in new images with staggered animation
+                setTimeout(() => {
+                    elements.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.classList.add('show');
+                        }, index * 100);
+                    });
+                }, 50);
+                
+                this.hideLoadingIndicator();
+                this.isTransitioning = false;
+                this.currentBatch = batch;
+            }
+            
+            createImageElement(imagePath, index) {
+                return new Promise((resolve) => {
+                    const container = document.createElement('div');
+                    container.className = 'gallery-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = imagePath;
+                    img.alt = `Gallery image ${index + 1}`;
+                    img.dataset.enlargable = 'true';
+                    img.className = 'img-responsive';
+                    
+                    // Preload image
+                    img.onload = () => {
+                        container.appendChild(img);
+                        resolve(container);
+                    };
+                    
+                    // Handle error gracefully
+                    img.onerror = () => {
+                        console.warn(`Failed to load image: ${imagePath}`);
+                        // Try alternative paths
+                        const alternativePaths = [
+                            imagePath.toLowerCase(),
+                            imagePath.replace('.JPG', '.jpg'),
+                            imagePath.replace('.JPG', '.jpeg'),
+                            imagePath.replace('.JPG', '.png')
+                        ];
+                        
+                        let pathIndex = 0;
+                        const tryNextPath = () => {
+                            if (pathIndex < alternativePaths.length) {
+                                img.src = alternativePaths[pathIndex++];
+                            } else {
+                                // If all fail, create placeholder
+                                container.style.background = '#222';
+                                container.innerHTML = '<div style="color: #666; text-align: center; padding: 20px;">Image not available</div>';
+                                resolve(container);
+                            }
+                        };
+                        
+                        img.onerror = tryNextPath;
+                        tryNextPath();
+                    };
+                });
+            }
+            
+            fadeOutCurrentImages() {
+                return new Promise((resolve) => {
+                    const items = this.gallery.querySelectorAll('.gallery-item');
+                    if (items.length === 0) {
+                        resolve();
+                        return;
+                    }
+                    
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('hide');
+                        }, index * 50);
+                    });
+                    
+                    setTimeout(resolve, this.transitionDuration);
+                });
+            }
+            
+            showLoadingIndicator() {
+                this.loadingIndicator.classList.add('active');
+            }
+            
+            hideLoadingIndicator() {
+                setTimeout(() => {
+                    this.loadingIndicator.classList.remove('active');
+                }, 500);
+            }
+            
+            async cycle() {
+                if (this.isTransitioning) return;
+                
+                const batch = this.getNextBatch();
+                await this.displayBatch(batch);
+            }
+            
+            start() {
+                // Display first batch immediately
+                this.cycle();
+                
+                // Set up interval for subsequent batches
+                this.cycleInterval = setInterval(() => {
+                    this.cycle();
+                }, this.displayDuration + this.transitionDuration);
+            }
+            
+            stop() {
+                if (this.cycleInterval) {
+                    clearInterval(this.cycleInterval);
+                    this.cycleInterval = null;
+                }
+            }
+            
+            restart() {
+                this.stop();
+                this.resetAvailableImages();
+                this.gallery.innerHTML = '';
+                this.start();
+            }
+        }
+        
+        // Initialize gallery when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const gallery = new DynamicGallery();
+            
+            // Expose gallery instance for debugging
+            window.dynamicGallery = gallery;
+        });
+    </script>
+</body>
 </html>
