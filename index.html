@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <title>Emmanuel's Portfolio - Dynamic Gallery</title>
+    <title>Emmanuel's Portfolio - Gallery</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
-        /* Enhanced styles for dynamic gallery */
+        /* Enhanced styles for gallery from the new file */
         #gallery {
             position: relative;
             min-height: 100vh;
@@ -26,9 +26,6 @@
 
         .gallery-item {
             position: relative;
-            opacity: 0;
-            transform: scale(0.8) translateY(20px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             overflow: hidden;
             border-radius: 8px;
@@ -37,16 +34,7 @@
             margin-bottom: 20px;
             display: inline-block;
             width: 100%;
-        }
-
-        .gallery-item.show {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-
-        .gallery-item.hide {
-            opacity: 0;
-            transform: scale(0.9) translateY(-20px);
+            transition: all 0.3s ease;
         }
 
         .gallery-item img {
@@ -57,28 +45,8 @@
         }
 
         .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Loading placeholder animation */
-        .image-placeholder {
-            width: 100%;
-            padding-bottom: 66.67%; /* 3:2 aspect ratio */
-            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         /* Lightbox styles */
@@ -132,80 +100,36 @@
             background: rgba(255, 255, 255, 0.2);
             transform: rotate(90deg);
         }
-
-        /* Loading indicator */
-        .loading-indicator {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 20px;
-            color: #fff;
-            font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 100;
-        }
-
-        .loading-indicator.active {
-            opacity: 1;
-        }
-
-        /* Extra large screens */
+        
+        /* Responsive adjustments */
         @media (min-width: 1600px) {
-            #gallery {
-                column-count: 5;
-            }
+            #gallery { column-count: 5; }
         }
         
         @media (min-width: 2000px) {
-            #gallery {
-                column-count: 6;
-                max-width: 2400px;
-                margin-right: auto;
-            }
+            #gallery { column-count: 6; max-width: 2400px; margin-right: auto;}
         }
 
-        /* Responsive adjustments */
         @media (max-width: 1200px) {
-            #gallery {
-                column-count: 3;
-            }
+            #gallery { column-count: 3; }
         }
         
         @media (max-width: 992px) {
-            #gallery {
-                column-count: 2;
-                padding-top: calc(var(--mobile-header-height) + 20px);
-            }
+            #gallery { column-count: 2; padding-top: calc(var(--mobile-header-height) + 20px); }
         }
         
         @media (max-width: 768px) {
-            #gallery {
-                column-count: 2;
-                padding: calc(var(--mobile-header-height) + 10px) 10px 10px;
-                column-gap: 10px;
-            }
-            
-            .gallery-item {
-                margin-bottom: 10px;
-            }
+            #gallery { column-count: 2; padding: calc(var(--mobile-header-height) + 10px) 10px 10px; column-gap: 10px; }
+            .gallery-item { margin-bottom: 10px; }
         }
         
         @media (max-width: 480px) {
-            #gallery {
-                column-count: 1;
-                padding: calc(var(--mobile-header-height) + 10px) 5px 10px;
-            }
+            #gallery { column-count: 1; padding: calc(var(--mobile-header-height) + 10px) 5px 10px; }
         }
 
         /* Touch device optimizations */
         @media (hover: none) and (pointer: coarse) {
-            .gallery-item:active {
-                transform: scale(0.98);
-            }
+            .gallery-item:active { transform: scale(0.98); }
         }
     </style>
 </head>
@@ -250,16 +174,34 @@
         </div>
     </nav>
 
-    <div id="gallery" class="container-fluid"></div>
-    
-    <div class="loading-indicator" id="loadingIndicator">Loading new images...</div>
+    <div id="gallery" class="container-fluid">
+        <div class="gallery-item"><img src="castle.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img4.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="pico.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="me.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="mee.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img5.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="palms.jpg" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img1.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img2.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img3.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="pico.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="pr.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img7.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img6.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img10.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img12.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img13.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img14.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="img15.JPG" class="img-responsive" data-enlargable alt="Gallery Image"></div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-        // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
+            // --- Mobile Navigation Toggle ---
             const sidebarToggle = document.querySelector('.sidebar-toggle');
             const overlay = document.querySelector('.sidebar-overlay');
             const body = document.body;
@@ -276,7 +218,6 @@
                 overlay.addEventListener('click', toggleSidebar);
             }
             
-            // Close sidebar when clicking a link on mobile
             const navLinks = document.querySelectorAll('.navbar-nav a');
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -285,229 +226,18 @@
                     }
                 });
             });
-        });
 
-        class DynamicGallery {
-            constructor() {
-                // Configuration - OPTIMIZED FOR PERFORMANCE
-                this.totalImages = 33;
-                this.displayDuration = 15000; // 15 seconds
-                this.transitionDuration = 1000; // 1 second for fade
-                
-                // Optimized batch sizes
-                const isMobile = window.innerWidth < 768;
-                const isSlowConnection = navigator.connection && 
-                    (navigator.connection.effectiveType === 'slow-2g' || 
-                     navigator.connection.effectiveType === '2g' ||
-                     navigator.connection.effectiveType === '3g');
-                
-                // Set images per batch based on device and connection
-                if (isMobile) {
-                    this.imagesPerBatch = 7; // As requested for mobile
-                } else if (isSlowConnection) {
-                    this.imagesPerBatch = 10; // Reduced for slow connections
-                } else {
-                    this.imagesPerBatch = 15; // Default for desktop
-                }
-                
-                // State management
-                this.allImages = [];
-                this.availableImages = [];
-                this.currentBatch = [];
-                this.isTransitioning = false;
-                this.cycleInterval = null;
-                
-                // Image cache for preloading
-                this.imageCache = new Map();
-                this.loadingImages = new Set();
-                this.failedImages = new Set();
-                
-                // Preload control
-                this.preloadBatchSize = isMobile ? 2 : 3; // Smaller preload chunks on mobile
-                this.maxConcurrentLoads = isMobile ? 2 : 4; // Limit concurrent loads
-                
-                // DOM elements
-                this.gallery = document.getElementById('gallery');
-                this.loadingIndicator = document.getElementById('loadingIndicator');
-                
-                // Initialize
-                this.init();
-            }
-            
-            init() {
-                // Generate image list
-                this.generateImageList();
-                
-                // Set up page visibility handling
-                this.setupVisibilityHandling();
-                
-                // Set up image click handling for lightbox
-                this.setupLightbox();
-                
-                // Handle resize events
-                this.setupResizeHandling();
-                
-                // Handle connection changes
-                this.setupConnectionHandling();
-                
-                // Start the gallery
-                this.start();
-            }
-            
-            generateImageList() {
-                // Create array of all image paths
-                this.allImages = Array.from({length: this.totalImages}, (_, i) => {
-                    const num = i + 1;
-                    return {
-                        id: `img${num}`,
-                        full: `img${num}.JPG`,
-                        loaded: false
-                    };
-                });
-                
-                // Initialize available images
-                this.resetAvailableImages();
-            }
-            
-            resetAvailableImages() {
-                this.availableImages = [...this.allImages];
-                this.shuffleArray(this.availableImages);
-            }
-            
-            shuffleArray(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-            }
-            
-            // Optimized preloading system
-            async preloadImage(imageObj) {
-                // Skip if already loading, loaded, or failed
-                if (this.loadingImages.has(imageObj.id) || 
-                    this.imageCache.has(imageObj.id) || 
-                    this.failedImages.has(imageObj.id)) {
-                    return Promise.resolve();
-                }
-                
-                // Wait if too many concurrent loads
-                while (this.loadingImages.size >= this.maxConcurrentLoads) {
-                    await new Promise(resolve => setTimeout(resolve, 100));
-                }
-                
-                this.loadingImages.add(imageObj.id);
-                
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    
-                    const timeout = setTimeout(() => {
-                        this.loadingImages.delete(imageObj.id);
-                        this.failedImages.add(imageObj.id);
-                        resolve();
-                    }, 10000); // 10 second timeout
-                    
-                    img.onload = () => {
-                        clearTimeout(timeout);
-                        this.imageCache.set(imageObj.id, img);
-                        imageObj.loaded = true;
-                        this.loadingImages.delete(imageObj.id);
-                        resolve(img);
-                    };
-                    
-                    img.onerror = () => {
-                        clearTimeout(timeout);
-                        console.warn(`Failed to preload: ${imageObj.full}`);
-                        this.failedImages.add(imageObj.id);
-                        this.loadingImages.delete(imageObj.id);
-                        resolve();
-                    };
-                    
-                    img.src = imageObj.full;
-                });
-            }
-            
-            // Smart preloading for next batch
-            async preloadNextBatch() {
-                const upcomingImages = this.availableImages.slice(0, this.imagesPerBatch);
-                
-                // Only preload images not already cached
-                const toPreload = upcomingImages.filter(img => 
-                    !this.imageCache.has(img.id) && !this.failedImages.has(img.id)
-                );
-                
-                // Preload in small chunks
-                for (let i = 0; i < toPreload.length; i += this.preloadBatchSize) {
-                    const chunk = toPreload.slice(i, i + this.preloadBatchSize);
-                    await Promise.all(chunk.map(img => this.preloadImage(img)));
-                }
-            }
-            
-            setupVisibilityHandling() {
-                // Handle page visibility changes
-                document.addEventListener('visibilitychange', () => {
-                    if (document.hidden) {
-                        this.stop();
-                    } else {
-                        this.resume();
-                    }
-                });
-                
-                // Handle window focus/blur
-                window.addEventListener('focus', () => this.resume());
-                window.addEventListener('blur', () => this.stop());
-            }
-            
-            setupConnectionHandling() {
-                if ('connection' in navigator) {
-                    navigator.connection.addEventListener('change', () => {
-                        const isSlowConnection = 
-                            navigator.connection.effectiveType === 'slow-2g' || 
-                            navigator.connection.effectiveType === '2g' ||
-                            navigator.connection.effectiveType === '3g';
-                        
-                        // Adjust batch size based on connection
-                        if (window.innerWidth < 768) {
-                            this.imagesPerBatch = 7;
-                        } else if (isSlowConnection) {
-                            this.imagesPerBatch = 10;
-                        } else {
-                            this.imagesPerBatch = 15;
-                        }
-                    });
-                }
-            }
-            
-            setupResizeHandling() {
-                let resizeTimer;
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(() => {
-                        // Adjust batch size for mobile
-                        const wasMobile = this.imagesPerBatch <= 7;
-                        const isMobile = window.innerWidth < 768;
-                        
-                        if (isMobile && !wasMobile) {
-                            this.imagesPerBatch = 7;
-                            this.preloadBatchSize = 2;
-                            this.maxConcurrentLoads = 2;
-                        } else if (!isMobile && wasMobile) {
-                            this.imagesPerBatch = 15;
-                            this.preloadBatchSize = 3;
-                            this.maxConcurrentLoads = 4;
-                        }
-                    }, 250);
-                });
-            }
-            
-            setupLightbox() {
-                this.gallery.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'IMG' && e.target.dataset.enlargable) {
-                        this.openLightbox(e.target.dataset.fullSrc || e.target.src);
+            // --- Lightbox Functionality ---
+            const gallery = document.getElementById('gallery');
+            if (gallery) {
+                gallery.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'IMG' && e.target.hasAttribute('data-enlargable')) {
+                        openLightbox(e.target.src);
                     }
                 });
             }
-            
-            openLightbox(src) {
+
+            function openLightbox(src) {
                 const lightbox = document.createElement('div');
                 lightbox.className = 'lightbox';
                 
@@ -517,7 +247,7 @@
                 
                 const closeBtn = document.createElement('div');
                 closeBtn.className = 'lightbox-close';
-                closeBtn.innerHTML = '×';
+                closeBtn.innerHTML = '&times;';
                 
                 lightbox.appendChild(img);
                 lightbox.appendChild(closeBtn);
@@ -525,276 +255,37 @@
                 const closeLightbox = () => {
                     lightbox.classList.remove('active');
                     setTimeout(() => lightbox.remove(), 300);
+                    document.removeEventListener('keydown', escapeHandler);
                 };
                 
                 lightbox.onclick = closeLightbox;
                 closeBtn.onclick = closeLightbox;
-                
-                // Prevent image click from closing lightbox
                 img.onclick = (e) => e.stopPropagation();
                 
                 document.body.appendChild(lightbox);
                 
-                // Trigger animation
                 requestAnimationFrame(() => {
                     lightbox.classList.add('active');
                 });
                 
-                // Close on escape key
                 const escapeHandler = (e) => {
                     if (e.key === 'Escape') {
                         closeLightbox();
-                        document.removeEventListener('keydown', escapeHandler);
                     }
                 };
                 document.addEventListener('keydown', escapeHandler);
             }
-            
-            getNextBatch() {
-                const batch = [];
-                
-                // If we don't have enough available images, reset the pool
-                if (this.availableImages.length < this.imagesPerBatch) {
-                    // Add remaining images to batch first
-                    batch.push(...this.availableImages);
-                    // Reset and shuffle
-                    this.resetAvailableImages();
-                    // Remove images already in batch from available pool
-                    this.availableImages = this.availableImages.filter(img => !batch.includes(img));
-                }
-                
-                // Fill the rest of the batch
-                const needed = this.imagesPerBatch - batch.length;
-                batch.push(...this.availableImages.splice(0, needed));
-                
-                // Start preloading next batch in background
-                setTimeout(() => this.preloadNextBatch(), 1000);
-                
-                return batch;
-            }
-            
-            async displayBatch(batch) {
-                this.isTransitioning = true;
-                this.showLoadingIndicator();
-                
-                // Clear gallery with fade out
-                await this.fadeOutCurrentImages();
-                
-                // Clear the gallery
-                this.gallery.innerHTML = '';
-                
-                // Create and add new images
-                const elements = batch.map((imageObj, index) => {
-                    return this.createImageElement(imageObj, index);
-                });
-                
-                // Add all elements to gallery
-                elements.forEach(el => this.gallery.appendChild(el));
-                
-                // Trigger reflow
-                this.gallery.offsetHeight;
-                
-                // Fade in new images with staggered animation
-                setTimeout(() => {
-                    elements.forEach((el, index) => {
-                        setTimeout(() => {
-                            el.classList.add('show');
-                        }, index * 50); // Stagger animation
-                    });
-                }, 50);
-                
-                this.hideLoadingIndicator();
-                this.isTransitioning = false;
-                this.currentBatch = batch;
-            }
-            
-            createImageElement(imageObj, index) {
-                const container = document.createElement('div');
-                container.className = 'gallery-item';
-                
-                // Create placeholder
-                const placeholder = document.createElement('div');
-                placeholder.className = 'image-placeholder';
-                
-                container.appendChild(placeholder);
-                
-                const img = document.createElement('img');
-                img.alt = `Gallery image ${index + 1}`;
-                img.dataset.enlargable = 'true';
-                img.dataset.fullSrc = imageObj.full;
-                img.className = 'img-responsive';
-                img.loading = 'lazy'; // Native lazy loading
-                img.decoding = 'async'; // Async decoding
-                img.style.cssText = `
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    opacity: 0;
-                    transition: opacity 0.5s ease;
-                `;
-                
-                // Load handling
-                const loadImage = () => {
-                    // Check if image is already cached
-                    if (this.imageCache.has(imageObj.id)) {
-                        img.src = this.imageCache.get(imageObj.id).src;
-                        container.style.position = 'relative';
-                        container.appendChild(img);
-                        setTimeout(() => {
-                            img.style.opacity = '1';
-                            placeholder.remove();
-                        }, 50);
-                        return;
+
+            // --- Sidebar Resize Handler ---
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    if (window.innerWidth >= 992) {
+                        document.body.classList.remove('sidebar-open');
                     }
-                    
-                    // Load image
-                    img.onload = () => {
-                        container.style.position = 'relative';
-                        container.appendChild(img);
-                        setTimeout(() => {
-                            img.style.opacity = '1';
-                            placeholder.remove();
-                        }, 50);
-                        
-                        // Cache the loaded image
-                        if (!this.imageCache.has(imageObj.id)) {
-                            const cachedImg = new Image();
-                            cachedImg.src = img.src;
-                            this.imageCache.set(imageObj.id, cachedImg);
-                        }
-                    };
-                    
-                    img.onerror = () => {
-                        console.warn(`Failed to load image: ${imageObj.full}`);
-                        
-                        // Try alternative paths
-                        const alternativePaths = [
-                            imageObj.full.toLowerCase(),
-                            imageObj.full.replace('.JPG', '.jpg'),
-                            imageObj.full.replace('.JPG', '.jpeg'),
-                            imageObj.full.replace('.JPG', '.png')
-                        ];
-                        
-                        let pathIndex = 0;
-                        const tryNextPath = () => {
-                            if (pathIndex < alternativePaths.length) {
-                                img.src = alternativePaths[pathIndex++];
-                            } else {
-                                // Mark as failed to prevent future attempts
-                                this.failedImages.add(imageObj.id);
-                                
-                                // Show error placeholder
-                                placeholder.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; text-align: center; font-size: 14px;">Unable to load image</div>';
-                                placeholder.style.animation = 'none';
-                                placeholder.style.background = '#1a1a1a';
-                            }
-                        };
-                        
-                        img.onerror = tryNextPath;
-                        tryNextPath();
-                    };
-                    
-                    img.src = imageObj.full;
-                };
-                
-                // Defer loading slightly to prevent blocking
-                setTimeout(loadImage, index * 100);
-                
-                return container;
-            }
-            
-            fadeOutCurrentImages() {
-                return new Promise((resolve) => {
-                    const items = this.gallery.querySelectorAll('.gallery-item');
-                    if (items.length === 0) {
-                        resolve();
-                        return;
-                    }
-                    
-                    items.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.add('hide');
-                        }, index * 30);
-                    });
-                    
-                    setTimeout(resolve, this.transitionDuration);
-                });
-            }
-            
-            showLoadingIndicator() {
-                this.loadingIndicator.classList.add('active');
-            }
-            
-            hideLoadingIndicator() {
-                setTimeout(() => {
-                    this.loadingIndicator.classList.remove('active');
-                }, 500);
-            }
-            
-            async cycle() {
-                if (this.isTransitioning) return;
-                
-                const batch = this.getNextBatch();
-                await this.displayBatch(batch);
-            }
-            
-            start() {
-                // Display first batch immediately
-                this.cycle();
-                
-                // Set up interval for subsequent batches
-                this.cycleInterval = setInterval(() => {
-                    this.cycle();
-                }, this.displayDuration + this.transitionDuration);
-                
-                // Start preloading future images
-                setTimeout(() => this.preloadNextBatch(), 2000);
-            }
-            
-            stop() {
-                if (this.cycleInterval) {
-                    clearInterval(this.cycleInterval);
-                    this.cycleInterval = null;
-                }
-            }
-            
-            resume() {
-                if (!this.cycleInterval && !document.hidden) {
-                    this.cycleInterval = setInterval(() => {
-                        this.cycle();
-                    }, this.displayDuration + this.transitionDuration);
-                }
-            }
-            
-            restart() {
-                this.stop();
-                this.resetAvailableImages();
-                this.gallery.innerHTML = '';
-                this.start();
-            }
-        }
-        
-        // Initialize gallery when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
-            const gallery = new DynamicGallery();
-            
-            // Expose gallery instance for debugging
-            window.dynamicGallery = gallery;
-        });
-        
-        // Handle resize events for sidebar
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
-                // Close sidebar on resize to desktop
-                if (window.innerWidth >= 992) {
-                    document.body.classList.remove('sidebar-open');
-                }
-            }, 250);
+                }, 250);
+            });
         });
     </script>
 </body>
