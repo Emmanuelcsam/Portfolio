@@ -241,6 +241,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
+
     <script>
         // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
@@ -275,7 +276,7 @@
             constructor() {
                 // Configuration
                 this.totalImages = 33;
-                this.imagesPerBatch = 20;
+                this.imagesPerBatch = 15;
                 this.displayDuration = 15000; // 15 seconds
                 this.transitionDuration = 1000; // 1 second for fade
                 
@@ -290,6 +291,11 @@
                 this.currentBatch = [];
                 this.isTransitioning = false;
                 this.cycleInterval = null;
+                
+                // Image cache for preloading
+                this.imageCache = new Map();
+                this.preloadQueue = [];
+                this.isPreloading = false;
                 
                 // DOM elements
                 this.gallery = document.getElementById('gallery');
@@ -312,15 +318,25 @@
                 // Handle resize events
                 this.setupResizeHandling();
                 
+                // Start preloading
+                this.startPreloading();
+                
                 // Start the gallery
                 this.start();
             }
             
             generateImageList() {
-                // Create array of all image paths
+                // Create array of all image paths with optimization structure
                 this.allImages = Array.from({length: this.totalImages}, (_, i) => {
                     const num = i + 1;
-                    return `img${num}.JPG`;
+                    return {
+                        full: `img${num}.JPG`,
+                        // If you have thumbnails, use them here
+                        // thumb: `thumbs/img${num}_thumb.jpg`,
+                        // For now, we'll use the same image but load it optimally
+                        thumb: `img${num}.JPG`,
+                        loaded: false
+                    };
                 });
                 
                 // Initialize available images
@@ -337,6 +353,56 @@
                     const j = Math.floor(Math.random() * (i + 1));
                     [array[i], array[j]] = [array[j], array[i]];
                 }
+            }
+            
+            // Preloading system
+            startPreloading() {
+                // Preload first batch immediately
+                const firstBatch = this.availableImages.slice(0, this.imagesPerBatch);
+                firstBatch.forEach(img => this.preloadImage(img));
+                
+                // Continue preloading in background
+                this.backgroundPreload();
+            }
+            
+            preloadImage(imageObj) {
+                return new Promise((resolve, reject) => {
+                    if (this.imageCache.has(imageObj.full)) {
+                        resolve(this.imageCache.get(imageObj.full));
+                        return;
+                    }
+                    
+                    const img = new Image();
+                    img.onload = () => {
+                        this.imageCache.set(imageObj.full, img);
+                        imageObj.loaded = true;
+                        resolve(img);
+                    };
+                    img.onerror = () => {
+                        console.warn(`Failed to preload: ${imageObj.full}`);
+                        reject();
+                    };
+                    img.src = imageObj.full;
+                });
+            }
+            
+            async backgroundPreload() {
+                if (this.isPreloading) return;
+                this.isPreloading = true;
+                
+                // Preload images in chunks to avoid overwhelming the browser
+                const chunkSize = 3;
+                const unloadedImages = this.allImages.filter(img => !img.loaded);
+                
+                for (let i = 0; i < unloadedImages.length; i += chunkSize) {
+                    const chunk = unloadedImages.slice(i, i + chunkSize);
+                    await Promise.all(chunk.map(img => this.preloadImage(img).catch(() => {})));
+                    
+                    // Small delay between chunks
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+                
+                this.isPreloading = false;
             }
             
             setupVisibilityHandling() {
@@ -372,7 +438,7 @@
             setupLightbox() {
                 this.gallery.addEventListener('click', (e) => {
                     if (e.target.tagName === 'IMG' && e.target.dataset.enlargable) {
-                        this.openLightbox(e.target.src);
+                        this.openLightbox(e.target.dataset.fullSrc || e.target.src);
                     }
                 });
             }
@@ -437,6 +503,10 @@
                 const needed = this.imagesPerBatch - batch.length;
                 batch.push(...this.availableImages.splice(0, needed));
                 
+                // Preload next batch in advance
+                const nextBatch = this.availableImages.slice(0, this.imagesPerBatch);
+                nextBatch.forEach(img => this.preloadImage(img));
+                
                 return batch;
             }
             
@@ -451,8 +521,8 @@
                 this.gallery.innerHTML = '';
                 
                 // Create and add new images
-                const imagePromises = batch.map((imagePath, index) => {
-                    return this.createImageElement(imagePath, index);
+                const imagePromises = batch.map((imageObj, index) => {
+                    return this.createImageElement(imageObj, index);
                 });
                 
                 const elements = await Promise.all(imagePromises);
@@ -477,53 +547,91 @@
                 this.currentBatch = batch;
             }
             
-            createImageElement(imagePath, index) {
+            createImageElement(imageObj, index) {
                 return new Promise((resolve) => {
                     const container = document.createElement('div');
                     container.className = 'gallery-item';
                     
+                    // Create placeholder
+                    const placeholder = document.createElement('div');
+                    placeholder.style.cssText = `
+                        width: 100%;
+                        padding-bottom: 66.67%; /* 3:2 aspect ratio, adjust as needed */
+                        background: linear-gradient(135deg, #f5f5f5 25%, #e0e0e0 25%, #e0e0e0 50%, #f5f5f5 50%, #f5f5f5 75%, #e0e0e0 75%, #e0e0e0);
+                        background-size: 20px 20px;
+                        animation: loading-gradient 1.5s linear infinite;
+                        border-radius: 8px;
+                    `;
+                    
+                    container.appendChild(placeholder);
+                    
                     const img = document.createElement('img');
-                    img.src = imagePath;
                     img.alt = `Gallery image ${index + 1}`;
                     img.dataset.enlargable = 'true';
+                    img.dataset.fullSrc = imageObj.full;
                     img.className = 'img-responsive';
+                    img.loading = 'lazy'; // Native lazy loading
+                    img.style.cssText = `
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    `;
                     
-                    // Preload image
-                    img.onload = () => {
+                    // Check if image is already cached
+                    if (this.imageCache.has(imageObj.full)) {
+                        img.src = imageObj.full;
+                        container.style.position = 'relative';
                         container.appendChild(img);
+                        setTimeout(() => {
+                            img.style.opacity = '1';
+                            placeholder.remove();
+                        }, 50);
                         resolve(container);
-                    };
-                    
-                    // Handle error gracefully
-                    img.onerror = () => {
-                        console.warn(`Failed to load image: ${imagePath}`);
-                        // Try alternative paths
-                        const alternativePaths = [
-                            imagePath.toLowerCase(),
-                            imagePath.replace('.JPG', '.jpg'),
-                            imagePath.replace('.JPG', '.jpeg'),
-                            imagePath.replace('.JPG', '.png')
-                        ];
-                        
-                        let pathIndex = 0;
-                        const tryNextPath = () => {
-                            if (pathIndex < alternativePaths.length) {
-                                img.src = alternativePaths[pathIndex++];
-                            } else {
-                                // If all fail, create placeholder
-                                container.style.background = '#222';
-                                container.style.minHeight = '200px';
-                                container.style.display = 'flex';
-                                container.style.alignItems = 'center';
-                                container.style.justifyContent = 'center';
-                                container.innerHTML = '<div style="color: #666; text-align: center; padding: 20px;">Image not available</div>';
-                                resolve(container);
-                            }
+                    } else {
+                        // Load image
+                        img.onload = () => {
+                            container.style.position = 'relative';
+                            container.appendChild(img);
+                            setTimeout(() => {
+                                img.style.opacity = '1';
+                                placeholder.remove();
+                            }, 50);
                         };
                         
-                        img.onerror = tryNextPath;
-                        tryNextPath();
-                    };
+                        img.onerror = () => {
+                            console.warn(`Failed to load image: ${imageObj.full}`);
+                            // Try alternative paths
+                            const alternativePaths = [
+                                imageObj.full.toLowerCase(),
+                                imageObj.full.replace('.JPG', '.jpg'),
+                                imageObj.full.replace('.JPG', '.jpeg'),
+                                imageObj.full.replace('.JPG', '.png')
+                            ];
+                            
+                            let pathIndex = 0;
+                            const tryNextPath = () => {
+                                if (pathIndex < alternativePaths.length) {
+                                    img.src = alternativePaths[pathIndex++];
+                                } else {
+                                    // If all fail, show error placeholder
+                                    placeholder.innerHTML = '<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #999; text-align: center;">Image unavailable</div>';
+                                    placeholder.style.animation = 'none';
+                                    placeholder.style.background = '#f0f0f0';
+                                }
+                            };
+                            
+                            img.onerror = tryNextPath;
+                            tryNextPath();
+                        };
+                        
+                        img.src = imageObj.full;
+                        resolve(container);
+                    }
                 });
             }
             
@@ -586,6 +694,16 @@
                 this.start();
             }
         }
+        
+        // Add loading gradient animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes loading-gradient {
+                0% { background-position: 0 0; }
+                100% { background-position: 20px 20px; }
+            }
+        `;
+        document.head.appendChild(style);
         
         // Initialize gallery when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
