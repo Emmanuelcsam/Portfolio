@@ -930,6 +930,8 @@ h3 {
 }
 
 @media (max-width: 768px) {
+    /* The following block is commented out to keep the sidebar visible */
+    /*
     .navbar.fixed-left {
         transform: translateX(-100%);
         width: 100%;
@@ -941,14 +943,17 @@ h3 {
     .navbar.fixed-left.show {
         transform: translateX(0);
     }
+    */
     
     .resume-container {
-        margin-left: 0;
+        /* This line is commented out to prevent the main content from sliding under the sidebar */
+        /* margin-left: 0; */
         padding: 1rem;
     }
     
     #gallery {
-        margin-left: 0;
+        /* This line is also commented out to prevent the gallery from sliding under the sidebar */
+        /* margin-left: 0; */
     }
     
     .bio-container {
