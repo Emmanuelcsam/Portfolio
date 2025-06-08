@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arts Portfolio</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet"> <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   </head>
   
   <body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <img src="PNG File/logo.png" id="logo" alt="E Logo">
+            <img src="images/logo.png" id="logo" alt="E Logo">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="hover-underline-animation" href="index.html">Gallery</a>
@@ -44,43 +47,51 @@
             </div>
       </div>
     </nav>
-    <div id="gallery" class="container-fluid"></div>
+    <div id="gallery" class="container-fluid">  
+        <img src="images/img1.jpg" class="img-responsive" data-enlargable alt="Artwork 1">
+        <img src="images/img4.jpg" class="card img-responsive" data-enlargable alt="Artwork 4">
+        <img src="images/img2.jpg" class="card img-responsive" data-enlargable alt="Artwork 2">
+        <img src="images/img3.jpg" class="card img-responsive" data-enlargable alt="Artwork 3">
+        <img src="images/img5.jpg" class="card img-responsive" data-enlargable alt="Artwork 5">
+        <img src="images/img6.jpg" class="card img-responsive" data-enlargable alt="Artwork 6">
+        <img src="images/img7.jpg" class="card img-responsive" data-enlargable alt="Artwork 7">
+        <img src="images/img8.jpg" class="img-responsive" data-enlargable alt="Artwork 8">
+        <img src="images/img9.jpg" class="card img-responsive" data-enlargable alt="Artwork 9">
+        <img src="images/img10.jpg" class="card img-responsive" data-enlargable alt="Artwork 10">
+        <img src="images/img11.jpg" class="card img-responsive" data-enlargable alt="Artwork 11">
+        <img src="images/img12.jpg" class="card img-responsive" data-enlargable alt="Artwork 12">
+        <img src="images/img13.jpg" class="card img-responsive" data-enlargable alt="Artwork 13">
+        <img src="images/img14.jpg" class="card img-responsive" data-enlargable alt="Artwork 14">
+        <img src="images/img15.jpg" class="card img-responsive" data-enlargable alt="Artwork 15">
+        <img src="images/img16.jpg" class="img-responsive" data-enlargable alt="Artwork 16">
+        <img src="images/img17.jpg" class="img-responsive" data-enlargable alt="Artwork 17">
+        <img src="images/img18.jpg" class="card img-responsive" data-enlargable alt="Artwork 18">
+        <img src="images/img19.jpg" class="card img-responsive" data-enlargable alt="Artwork 19">
+        <img src="images/img20.jpg" class="card img-responsive" data-enlargable alt="Artwork 20">
+        <img src="images/img21.jpg" class="card img-responsive" data-enlargable alt="Artwork 21">
+        <img src="images/img22.jpg" class="card img-responsive" data-enlargable alt="Artwork 22">
+        <img src="images/img23.jpg" class="card img-responsive" data-enlargable alt="Artwork 23">
+        <img src="images/img24.jpg" class="card img-responsive" data-enlargable alt="Artwork 24">
+        <img src="images/img25.jpg" class="card img-responsive" data-enlargable alt="Artwork 25">
+        <img src="images/img26.jpg" class="card img-responsive" data-enlargable alt="Artwork 26">
+        <img src="images/img27.jpg" class="card img-responsive" data-enlargable alt="Artwork 27">
+        <img src="images/img28.jpg" class="card img-responsive" data-enlargable alt="Artwork 28">
+        <img src="images/img29.jpg" class="card img-responsive" data-enlargable alt="Artwork 29">
+        <img src="images/img30.jpg" class="card img-responsive" data-enlargable alt="Artwork 30">
+        <img src="images/img31.jpg" class="card img-responsive" data-enlargable alt="Artwork 31">
+        <img src="images/img32.jpg" class="card img-responsive" data-enlargable alt="Artwork 32">
+        <img src="images/img33.jpg" class="card img-responsive" data-enlargable alt="Artwork 33">
+    </div>
       
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
-    // Efficiently generate gallery images
     $(document).ready(function() {
-        const gallery = $('#gallery');
-        const imageCount = 33; // Total number of images
-        // As seen in the original HTML, some images did not have the 'card' class.
-        const noCardImages = [1, 8, 16, 17]; 
-
-        for (let i = 1; i <= imageCount; i++) {
-            // Create a new image element using jQuery
-            const img = $('<img>');
-
-            // Set the core attributes
-            img.attr('src', `IMG File/img${i}.jpg`); // Corrected path
-            img.attr('data-enlargable', '');
-            img.attr('alt', `Artwork ${i}`);
-            
-            // Add classes, applying the 'card' class conditionally
-            let classes = 'img-responsive';
-            if (!noCardImages.includes(i)) {
-                classes += ' card';
-            }
-            img.addClass(classes);
-
-            // Append the new image to the gallery
-            gallery.append(img);
-        }
-
-        // The original script to allow images to be enlarged
         $('img[data-enlargable]').addClass('img-enlargable').click(function() {
             var src = $(this).attr('src');
+            // Use RGBA for transparency
             $('<div>').css({
                 background: 'rgba(0,0,0,.5) url("' + src + '") no-repeat center',
                 backgroundSize: 'contain',
