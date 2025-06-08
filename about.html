@@ -21,6 +21,9 @@
 </head>
 
 <body>
+    <button class="sidebar-toggle" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+    </button>
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <img src="logo.png" id="logo" alt="E Logo" class="logo-animation">
@@ -856,6 +859,17 @@
                     });
                 }
             });
+        });
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('sidebar-open');
+                });
+            }
         });
     </script>
 </body>

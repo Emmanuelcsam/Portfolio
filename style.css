@@ -929,62 +929,50 @@ h3 {
     }
 }
 
+/* --- Mobile Styles (for smaller screens) --- */
 @media (max-width: 768px) {
-    /* The following block is commented out to keep the sidebar visible */
-    /*
+    .sidebar-toggle {
+        display: block;
+    }
+
     .navbar.fixed-left {
         transform: translateX(-100%);
-        width: 100%;
-        height: auto;
-        position: fixed;
+        transition: transform var(--transition-normal);
+        box-shadow: 4px 0 20px rgba(0,0,0,0.2);
         z-index: 1050;
     }
-    
-    .navbar.fixed-left.show {
+
+    /* State when sidebar is open */
+    body.sidebar-open .navbar.fixed-left {
         transform: translateX(0);
     }
-    */
-    
-    .resume-container {
-        /* This line is commented out to prevent the main content from sliding under the sidebar */
-        /* margin-left: 0; */
+
+    .resume-container, #gallery {
+        margin-left: 0;
         padding: 1rem;
+        transition: margin-left var(--transition-normal);
     }
-    
-    #gallery {
-        /* This line is also commented out to prevent the gallery from sliding under the sidebar */
-        /* margin-left: 0; */
+
+    /* The following block is no longer needed and can be removed */
+    /*
+    body {
+        transform: scale(0.8); 
+        transform-origin: top left;
+        width: 125%;
     }
-    
+    */
+
     .bio-container {
         flex-direction: column;
         text-align: center;
     }
-    
-    .bio-image {
-        flex: unset;
-    }
-    
-    .hero-section {
-        padding: 2rem;
-    }
-    
-    .tab-navigation {
-        gap: 0.3rem;
-    }
-    
-    .tab-button {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
+
+    .bio-image { flex: unset; }
+    .hero-section { padding: 2rem; }
+    .tab-navigation { gap: 0.3rem; }
+    .tab-button { padding: 0.5rem 1rem; font-size: 0.9rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
 }
 
 @media (max-width: 600px) {
@@ -1168,4 +1156,22 @@ h3 {
     .achievements-grid-v2 {
         grid-template-columns: 1fr;
     }
+}
+
+/* ===== Sidebar Toggle Button ===== */
+.sidebar-toggle {
+    display: none; /* Hidden by default on desktop */
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1040; /* Ensures it's above content but below open sidebar */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    font-size: 20px;
+    color: var(--text-primary);
 }
