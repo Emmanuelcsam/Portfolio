@@ -1169,3 +1169,11 @@ h3 {
         grid-template-columns: 1fr;
     }
 }
+
+/* Make fonts and other elements smaller on screens smaller than 768px */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* or any other smaller size */
+  }
+}
+
