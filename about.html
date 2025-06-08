@@ -73,10 +73,21 @@
                     <p class="hero-subtitle">Physics & Philosophy Student | Creative Professional</p>
                     </div>
                     <div class="hero-skills">
-                        <span class="skill-badge"><span>Physics Research</span></span>
-                        <span class="skill-badge"><span>Engineering Design</span></span>
-                        <span class="skill-badge"><span>Photography</span></span>
-                        <span class="skill-badge"><span>Creative Writing</span></span>
+                        <a href="#" class="skill-badge" onclick="navigateToTab('experience'); return false;">
+                            <span>Physics Research</span>
+                        </a>
+
+                        <a href="#" class="skill-badge" onclick="navigateToTab('research'); return false;">
+                            <span>Engineering Design</span>
+                        </a>
+
+                        <a href="index.html" class="skill-badge">
+                            <span>Photography</span>
+                        </a>
+
+                        <a href="#" class="skill-badge" onclick="navigateToTab('experience'); return false;">
+                            <span>Creative Writing</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -94,26 +105,39 @@
 
         <div id="overview" class="tab-content active">
             <div class="overview-grid">
-                <div class="overview-card card-animation">
-                    <div class="card-icon"><i class="fa fa-lightbulb-o"></i></div>
-                    <h3>Research</h3>
-                    <p>Conducted research in optics, and atomistic spin dynamics modeling for next-generation semiconductors.</p>
-                </div>
-                <div class="overview-card card-animation">
-                    <div class="card-icon"><i class="fa fa-users"></i></div>
-                    <h3>Leadership</h3>
-                    <p>President of multiple organizations including Robotics Club, Data Science Society, Tech Executive Association, and Photo Club.</p>
-                </div>
-                <div class="overview-card card-animation">
-                    <div class="card-icon"><i class="fa fa-trophy"></i></div>
-                    <h3>Innovations</h3>
-                    <p>Created Bird Sensor, Radio-frequency Locator, and AI Defect Analyzer.</p>
-                </div>
-                <div class="overview-card card-animation">
-                    <div class="card-icon"><i class="fa fa-camera"></i></div>
-                    <h3>Creative Arts</h3>
-                    <p>Developed experience in photography, filmmaking, creative writing, and music production.</p>
-                </div>
+
+                <a href="#" onclick="navigateToTab('experience'); return false;" class="overview-card-link">
+                    <div class="overview-card card-animation">
+                        <div class="card-icon"><i class="fa fa-lightbulb-o"></i></div>
+                        <h3>Research</h3>
+                        <p>Conducted research in optics, and atomistic spin dynamics modeling for next-generation semiconductors.</p>
+                    </div>
+                </a>
+
+                <a href="#" onclick="navigateToTab('achievements'); return false;" class="overview-card-link">
+                    <div class="overview-card card-animation">
+                        <div class="card-icon"><i class="fa fa-users"></i></div>
+                        <h3>Leadership</h3>
+                        <p>President of multiple organizations including Robotics Club, Data Science Society, Tech Executive Association, and Photo Club.</p>
+                    </div>
+                </a>
+
+                <a href="#" onclick="navigateToTab('research'); return false;" class="overview-card-link">
+                    <div class="overview-card card-animation">
+                        <div class="card-icon"><i class="fa fa-trophy"></i></div>
+                        <h3>Innovations</h3>
+                        <p>Created Bird Sensor, Radio-frequency Locator, and AI Defect Analyzer.</p>
+                    </div>
+                </a>
+
+                <a href="index.html" class="overview-card-link">
+                    <div class="overview-card card-animation">
+                        <div class="card-icon"><i class="fa fa-camera"></i></div>
+                        <h3>Creative Arts</h3>
+                        <p>Developed experience in photography, filmmaking, creative writing, and music production.</p>
+                    </div>
+                </a>
+
             </div>
         </div>
 
@@ -626,6 +650,38 @@
     <script src="js/bootstrap.min.js"></script>
     
     <script>
+        // --- START: New Helper Function ---
+        function navigateToTab(tabName) {
+            // Find the button that opens the target tab
+            const targetButton = document.querySelector(`.tab-button[onclick*="'${tabName}'"]`);
+            if (targetButton) {
+                // Simulate a click on that button to properly switch tabs
+                targetButton.click();
+            }
+        }
+        // --- END: New Helper Function ---
+
+
+        // --- START: Mobile Navigation Toggle ---
+        // This new version ONLY allows the hamburger button to open/close the sidebar.
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const body = document.body;
+            
+            // This function adds or removes the 'sidebar-open' class to the body
+            function toggleSidebar() {
+                body.classList.toggle('sidebar-open');
+            }
+            
+            // Only attach the toggle function to the hamburger button
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+        });
+        // --- END: Mobile Navigation Toggle ---
+
+
+        // --- START: All other scripts remain the same ---
         // Progress indicator
         function updateProgressIndicator() {
             const container = document.querySelector('.resume-container');
@@ -636,32 +692,6 @@
         }
         window.addEventListener('scroll', updateProgressIndicator);
         window.addEventListener('resize', updateProgressIndicator);
-        
-        // Mobile Navigation Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebarToggle = document.querySelector('.sidebar-toggle');
-            const overlay = document.querySelector('.sidebar-overlay');
-            const body = document.body;
-            
-            function toggleSidebar() {
-                body.classList.toggle('sidebar-open');
-            }
-            
-            if (sidebarToggle) {
-                sidebarToggle.addEventListener('click', toggleSidebar);
-            }
-            if (overlay) {
-                overlay.addEventListener('click', toggleSidebar);
-            }
-            const navLinks = document.querySelectorAll('.navbar-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 992) {
-                        body.classList.remove('sidebar-open');
-                    }
-                });
-            });
-        });
 
         // Tab functionality
         function openTab(evt, tabName) {

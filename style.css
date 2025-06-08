@@ -630,6 +630,17 @@ body.sidebar-open .sidebar-overlay {
     transform: scale(1.1) rotate(-5deg);
 }
 
+/* Add this new rule to your Overview Grid styles */
+.overview-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.overview-card-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
 /* ===== RESTORED & ENHANCED: Timeline ===== */
 .timeline {
     position: relative;
