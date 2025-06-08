@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Arts Portfolio</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap -->
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 
-<body>
-    <!-- Navigation -->
+  </head>
+
+  
+  <body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Gallery -->
     <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <img src="images/logo.png" id="logo" alt="E Logo">
+            <img src="logo.png" id="logo" alt="E Logo">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="hover-underline-animation" href="index.html">Gallery</a>
@@ -34,88 +34,90 @@
                     <a class="hover-underline-animation" href="about.html">About the Artist</a>
                 </li>
             </ul>
-            <div class="icons-container">
-                <a href="mailto:ecsampson03@gmail.com">
-                    <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i>
-                </a>
-                <a href="mailto:ecsampson03@gmail.com">[  ecsampson03@gmail.com  ]</a>
-                <br>
-                <a href="https://www.linkedin.com/in/emmanuel-sampson-0b0483225/" target="_blank" rel="noopener noreferrer">
-                    <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path>
-                    </svg>
-                </a>
-                <footer class="footer">  
-                    <a href="https://www.linkedin.com/in/arianna-lagamma/">©Website by Arianna LaGamma 2024. All Rights Reserved.</a>
-                </footer>
-            </div>
+        <div class="icons-container">
+            <a href="mailto:ecsampson03@gmail.com">
+              <i class="fa fa-envelope-o mr-3" style="font-size: 24px;"></i></a></svg>
+              <a href="mailto:ecsampson03@gmail.com">[  ecsampson03@gmail.com  ]</a>
+              <br>
+            <a href="https://www.linkedin.com/in/emmanuel-sampson-0b0483225/" target="_blank" rel="noopener noreferrer">
+                <svg class="section" stroke="currentColor" fill="black" stroke-width="0" viewBox="0 0 1024 1024" height="2em" width="2em" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"></path> linkedin.com/in/arianna-lagamma</i></a></svg>
         </div>
+      </div>
     </nav>
-    
-    <!-- Gallery -->
-    <div id="gallery" class="container-fluid">  
-        <img src="images/img1.jpg" class="img-responsive" data-enlargable alt="Artwork 1" onerror="this.src='img1.jpg'">
-        <img src="images/img4.jpg" class="card img-responsive" data-enlargable alt="Artwork 4" onerror="this.src='img4.jpg'">
-        <img src="images/img2.jpg" class="card img-responsive" data-enlargable alt="Artwork 2" onerror="this.src='img2.jpg'">
-        <img src="images/img3.jpg" class="card img-responsive" data-enlargable alt="Artwork 3" onerror="this.src='img3.jpg'">
-        <img src="images/img5.jpg" class="card img-responsive" data-enlargable alt="Artwork 5" onerror="this.src='img5.jpg'">
-        <img src="images/img6.jpg" class="card img-responsive" data-enlargable alt="Artwork 6" onerror="this.src='img6.jpg'">
-        <img src="images/img7.jpg" class="card img-responsive" data-enlargable alt="Artwork 7" onerror="this.src='img7.jpg'">
-        <img src="images/img8.jpg" class="img-responsive" data-enlargable alt="Artwork 8" onerror="this.src='img8.jpg'">
-        <img src="images/img9.jpg" class="card img-responsive" data-enlargable alt="Artwork 9" onerror="this.src='img9.jpg'">
-        <img src="images/img10.jpg" class="card img-responsive" data-enlargable alt="Artwork 10" onerror="this.src='img10.jpg'">
-        <img src="images/img11.jpg" class="card img-responsive" data-enlargable alt="Artwork 11" onerror="this.src='img11.jpg'">
-        <img src="images/img12.jpg" class="card img-responsive" data-enlargable alt="Artwork 12" onerror="this.src='img12.jpg'">
-        <img src="images/img13.jpg" class="card img-responsive" data-enlargable alt="Artwork 13" onerror="this.src='img13.jpg'">
-        <img src="images/img14.jpg" class="card img-responsive" data-enlargable alt="Artwork 14" onerror="this.src='img14.jpg'">
-        <img src="images/img15.jpg" class="card img-responsive" data-enlargable alt="Artwork 15" onerror="this.src='img15.jpg'">
-        <img src="images/img16.jpg" class="img-responsive" data-enlargable alt="Artwork 16" onerror="this.src='img16.jpg'">
-        <img src="images/img17.jpg" class="img-responsive" data-enlargable alt="Artwork 17" onerror="this.src='img17.jpg'">
-        <img src="images/img18.jpg" class="card img-responsive" data-enlargable alt="Artwork 18" onerror="this.src='img18.jpg'">
-        <img src="images/img19.jpg" class="card img-responsive" data-enlargable alt="Artwork 19" onerror="this.src='img19.jpg'">
-        <img src="images/img20.jpg" class="card img-responsive" data-enlargable alt="Artwork 20" onerror="this.src='img20.jpg'">
-        <img src="images/img21.jpg" class="card img-responsive" data-enlargable alt="Artwork 21" onerror="this.src='img21.jpg'">
-        <img src="images/img22.jpg" class="card img-responsive" data-enlargable alt="Artwork 22" onerror="this.src='img22.jpg'">
-        <img src="images/img23.jpg" class="card img-responsive" data-enlargable alt="Artwork 23" onerror="this.src='img23.jpg'">
-        <img src="images/img24.jpg" class="card img-responsive" data-enlargable alt="Artwork 24" onerror="this.src='img24.jpg'">
-        <img src="images/img25.jpg" class="card img-responsive" data-enlargable alt="Artwork 25" onerror="this.src='img25.jpg'">
-        <img src="images/img26.jpg" class="card img-responsive" data-enlargable alt="Artwork 26" onerror="this.src='img26.jpg'">
-        <img src="images/img27.jpg" class="card img-responsive" data-enlargable alt="Artwork 27" onerror="this.src='img27.jpg'">
-        <img src="images/img28.jpg" class="card img-responsive" data-enlargable alt="Artwork 28" onerror="this.src='img28.jpg'">
-        <img src="images/img29.jpg" class="card img-responsive" data-enlargable alt="Artwork 29" onerror="this.src='img29.jpg'">
-        <img src="images/img30.jpg" class="card img-responsive" data-enlargable alt="Artwork 30" onerror="this.src='img30.jpg'">
-        <img src="images/img31.jpg" class="card img-responsive" data-enlargable alt="Artwork 31" onerror="this.src='img31.jpg'">
-        <img src="images/img32.jpg" class="card img-responsive" data-enlargable alt="Artwork 32" onerror="this.src='img32.jpg'">
-        <img src="images/img33.jpg" class="card img-responsive" data-enlargable alt="Artwork 33" onerror="this.src='img33.jpg'">
-    </div>
 
-    <!-- Scripts -->
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Image Enlargement Script -->
-    <script>
-    $(document).ready(function() {
-        $('img[data-enlargable]').addClass('img-enlargable').click(function() {
-            var src = $(this).attr('src');
-            var $overlay = $('<div>').css({
-                background: 'RGBA(0,0,0,.5) url("' + src + '") no-repeat center',
-                backgroundSize: 'contain',
-                width: '100%',
-                height: '100%',
-                position: 'fixed',
-                zIndex: '10000',
-                top: '0',
-                left: '0',
-                cursor: 'zoom-out'
-            }).click(function() {
-                $(this).remove();
-            }).appendTo('body');
-        });
+    <div id="gallery" class="container-fluid">  
+        <img src="img1.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img4.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img2.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img3.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img5.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img6.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img7.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img8.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img9.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img10.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img11.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img12.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img13.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img14.JPG" class="card img-responsive" data-enlargable alt="none">
+
+        <img src="img15.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img16.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img17.JPG" class="img-responsive" data-enlargable alt="none">
+        <img src="img18.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img19.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img20.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img21.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img22.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img23.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img24.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img25.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img26.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img27.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img28.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img29.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img30.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img31.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img32.JPG" class="card img-responsive" data-enlargable alt="none">
+        <img src="img33.JPG" class="card img-responsive" data-enlargable alt="none">
+
+
+      
+      </div>
+      
+
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- JavaScript -->
+<script>
+$(document).ready(function() {
+    $('img[data-enlargable]').addClass('img-enlargable').click(function() {
+        var src = $(this).attr('src');
+        $('<div>').css({
+            background: 'RGBA(0,0,0,.5) url('+src+') no-repeat center',
+            backgroundSize: 'contain',
+            width:'100%', height:'100%',
+            position:'fixed',
+            zIndex:'10000',
+            top:'0', left:'0',
+            cursor: 'zoom-out'
+        }).click(function() {
+            $(this).remove();
+        }).appendTo('body');
     });
-    </script>
-</body>
+});
+</script>
+  </body>
+</html>
+
+</script>
+  </body>
 </html>
