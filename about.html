@@ -18,6 +18,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="insane_animations.css">
 </head>
 
 <body>
@@ -90,7 +92,7 @@
                         </a>
                     </div>
                     <div class="hero-actions">
-                        <button class="download-cv-btn" onclick="generatePDF()">
+                        <button class="download-cv-btn" onclick="generateProfessionalPDF()">
                             <i class="fa fa-download"></i>
                             <span>Download CV as PDF</span>
                         </button>
@@ -678,6 +680,12 @@
                 </div>
             </div>
         </div>
+    </div> <div id="animation-prompt">
+        <p id="prompt-text">Thank you for reaching the bottom. You've earned animations!</p>
+        <label class="switch">
+            <input type="checkbox" id="animation-toggle">
+            <span class="slider"></span>
+        </label>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -686,36 +694,28 @@
     <script>
         // --- START: New Helper Function ---
         function navigateToTab(tabName) {
-            // Find the button that opens the target tab
             const targetButton = document.querySelector(`.tab-button[onclick*="'${tabName}'"]`);
             if (targetButton) {
-                // Simulate a click on that button to properly switch tabs
                 targetButton.click();
             }
         }
         // --- END: New Helper Function ---
 
-
         // --- START: Mobile Navigation Toggle ---
-        // This new version ONLY allows the hamburger button to open/close the sidebar.
         document.addEventListener('DOMContentLoaded', function() {
             const sidebarToggle = document.querySelector('.sidebar-toggle');
             const body = document.body;
             
-            // This function adds or removes the 'sidebar-open' class to the body
             function toggleSidebar() {
                 body.classList.toggle('sidebar-open');
             }
             
-            // Only attach the toggle function to the hamburger button
             if (sidebarToggle) {
                 sidebarToggle.addEventListener('click', toggleSidebar);
             }
         });
         // --- END: Mobile Navigation Toggle ---
 
-
-        // --- START: All other scripts remain the same ---
         // Progress indicator
         function updateProgressIndicator() {
             const container = document.querySelector('.resume-container');
@@ -763,14 +763,12 @@
             });
         }, observerOptions);
         
-        // Observe all animated elements
         document.addEventListener('DOMContentLoaded', function() {
             const animatedElements = document.querySelectorAll('.fade-in, .slide-in, .timeline-item, .card-animation, .ach-card-v2, .skill-category, .overview-card, .project-card');
             animatedElements.forEach(el => observer.observe(el));
             document.getElementById('overview').classList.add('active');
         });
         
-        // Handle resize events
         let resizeTimer;
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimer);
@@ -803,55 +801,180 @@
         });
         // --- END: Leadership Accordion ---
     </script>
-    <!-- 1. Load the library first -->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <!-- 2. Then your PDF-generation code -->
     <script>
-      function generatePDF() {
-        const downloadBtn = document.querySelector('.download-cv-btn');
-        const originalContent = downloadBtn.innerHTML;
-        downloadBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> <span>Generating PDF...</span>';
-        downloadBtn.disabled = true;
+    async function generateProfessionalPDF() {
+        const btn = document.querySelector('.download-cv-btn');
+        const origText = btn.innerHTML;
+        btn.innerHTML = '<span>Generating PDF...</span>';
+        btn.disabled = true;
 
-        // Clone and prep your resume…
-        const resumeContainer = document.querySelector('.resume-container').cloneNode(true);
-        resumeContainer.querySelectorAll('.tab-navigation, .footer, .progress-indicator, .sidebar-toggle, .mobile-header')
-                       .forEach(el => el.remove());
-        resumeContainer.querySelectorAll('.tab-content').forEach(tab => {
-          tab.style.display = 'block';
-          tab.style.pageBreakAfter = 'auto';
-          tab.style.marginBottom = '40px';
-        });
-        resumeContainer.style.background = 'white';
-        resumeContainer.style.marginLeft  = '0';
-        resumeContainer.style.padding     = '20px';
-        resumeContainer.style.width       = '100%';
-        resumeContainer.style.maxWidth    = '100%';
+        // --- 1. DATA EXTRACTION ---
+        const name = document.querySelector('.hero-title')?.innerText || 'Emmanuel Sampson';
+        const email = 'ecsampson03@gmail.com';
+        const linkedin = 'linkedin.com/in/emmanuel-sampson';
+        const phone = '123-456-7890'; // Placeholder phone number
 
-        // Set up options
+        // Education Data
+        const educationItems = Array.from(document.querySelectorAll('#education .timeline-item')).slice(0, 2).map(item => ({
+            degree: item.querySelector('.subtitle')?.innerText.trim(),
+            institution: item.querySelector('h3')?.innerText.trim(),
+            date: item.querySelector('.timeline-date')?.innerText.trim()
+        }));
+
+        // Experience Data (Top 4 most relevant)
+        const experienceItems = Array.from(document.querySelectorAll('#experience .resume-card')).slice(0, 4).map(card => ({
+            title: card.querySelector('h3')?.innerText.trim(),
+            company: card.querySelector('.subtitle')?.innerText.trim(),
+            date: card.querySelector('.date')?.innerText.trim(),
+            bullets: Array.from(card.querySelectorAll('ul li')).map(li => `<li>${li.innerText.trim()}</li>`).join('')
+        }));
+        
+        // Projects Data (Top 4 most relevant)
+        const projectItems = Array.from(document.querySelectorAll('#research .project-card')).slice(0, 4).map(card => ({
+            title: card.querySelector('h3')?.innerText.trim(),
+            context: card.querySelector('.project-status')?.innerText.trim(),
+            description: card.querySelector('p')?.innerText.trim()
+        }));
+
+        // Skills Data
+        const programmingSkills = Array.from(document.querySelectorAll('#skills .skill-category:nth-of-type(1) .skill-badge span')).map(s => s.innerText).join(', ');
+        const softwareSkills = Array.from(document.querySelectorAll('#skills .skill-category:nth-of-type(2) .skill-badge span')).map(s => s.innerText).join(', ');
+        const specializedSkills = Array.from(document.querySelectorAll('#skills .skill-category:nth-of-type(3) .skill-badge span')).map(s => s.innerText).join(', ');
+        const languages = Array.from(document.querySelectorAll('#skills .language-card h4')).map(l => l.innerText).join(' • ');
+
+        // Leadership & Honors
+        const leadershipItems = [
+            'President: William and Mary Robotics Club (2 yrs)',
+            'President: Data Science Society (1 yr)',
+            'Outreach Director: Society of Physics Students (1 yr)'
+        ];
+        const honorItems = [
+            'William and Mary Catron & Bosanko Scholarship Recipient',
+            'William and Mary 2024 Hackathon Winner',
+            'Sharpe Community Scholar'
+        ];
+
+
+        // --- 2. HTML & CSS FOR PDF ---
+        const styles = `
+            <style>
+                body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10pt; line-height: 1.4; color: #333; }
+                h1 { font-size: 22pt; text-align: center; margin: 0; padding: 0; }
+                .contact-info { text-align: center; margin-bottom: 20px; font-size: 10pt; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+                .contact-info a { text-decoration: none; color: #0066cc; }
+                .section { margin-bottom: 16px; }
+                .section-title { font-size: 12pt; font-weight: bold; text-transform: uppercase; border-bottom: 2px solid #000; padding-bottom: 4px; margin-bottom: 8px; }
+                .entry { margin-bottom: 12px; }
+                .entry-header { display: flex; justify-content: space-between; align-items: baseline; }
+                .entry-header .title { font-size: 11pt; font-weight: bold; }
+                .entry-header .date { font-size: 10pt; color: #444; }
+                .entry-subheader { font-style: italic; color: #555; margin-top: -2px; }
+                .entry ul { list-style-type: disc; margin: 5px 0 0 0; padding-left: 20px; }
+                .entry li { margin-bottom: 4px; }
+                .project-entry { margin-bottom: 8px; }
+                .project-entry .title { font-weight: bold; }
+                .project-entry .context { font-style: italic; color: #555; margin-left: 5px; }
+                .skills-row { display: flex; margin-bottom: 4px; }
+                .skills-label { font-weight: bold; width: 120px; flex-shrink: 0; }
+                .skills-list { flex-grow: 1; }
+                .combined-section ul { columns: 2; -webkit-columns: 2; column-gap: 40px; list-style-position: inside; padding-left: 0; margin: 0;}
+                .combined-section li { margin-bottom: 4px; }
+            </style>
+        `;
+
+        const resumeHtml = `
+            <html>
+            <head>${styles}</head>
+            <body>
+                <h1>${name}</h1>
+                <div class="contact-info">
+                    <a href="mailto:${email}">${email}</a> | <a href="https://${linkedin}" target="_blank">${linkedin}</a>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Education</div>
+                    ${educationItems.map(edu => `
+                        <div class="entry">
+                            <div class="entry-header">
+                                <span class="title">${edu.institution}</span>
+                                <span class="date">${edu.date}</span>
+                            </div>
+                            <div class="entry-subheader">${edu.degree}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Skills</div>
+                    <div class="skills-row"><span class="skills-label">Programming:</span> <span class="skills-list">${programmingSkills}</span></div>
+                    <div class="skills-row"><span class="skills-label">Software:</span> <span class="skills-list">${softwareSkills}</span></div>
+                    <div class="skills-row"><span class="skills-label">Specialized:</span> <span class="skills-list">${specializedSkills}</span></div>
+                    <div class="skills-row"><span class="skills-label">Languages:</span> <span class="skills-list">${languages}</span></div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Relevant Experience</div>
+                    ${experienceItems.map(exp => `
+                        <div class="entry">
+                            <div class="entry-header">
+                                <span class="title">${exp.title}</span>
+                                <span class="date">${exp.date}</span>
+                            </div>
+                            <div class="entry-subheader">${exp.company}</div>
+                            <ul>${exp.bullets}</ul>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Projects</div>
+                    ${projectItems.map(proj => `
+                        <div class="project-entry">
+                            <span class="title">${proj.title}</span>
+                            <span class="context">(${proj.context})</span>
+                            <p style="margin: 2px 0 0 0;">${proj.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="section combined-section">
+                    <div class="section-title">Leadership & Honors</div>
+                     <ul>
+                        ${[...leadershipItems, ...honorItems].map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                </div>
+
+            </body>
+            </html>
+        `;
+
+        // --- 3. PDF GENERATION ---
+        const element = document.createElement('div');
+        element.innerHTML = resumeHtml;
+
         const opt = {
-          margin:    [15,15,15,15],
-          filename:  'Emmanuel_Sampson_CV.pdf',
-          image:     { type:'jpeg', quality:0.95 },
-          html2canvas:{ scale:2, letterRendering:true, useCORS:true, scrollY:-window.scrollY },
-          jsPDF:     { unit:'mm', format:'a4', orientation:'portrait' },
-          pagebreak: { mode:['avoid-all','css','legacy'] }
+            margin:       [0.5, 0.5, 0.5, 0.5], // inches
+            filename:     'Emmanuel_Sampson_CV.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
 
-        // Generate and save
-        html2pdf().set(opt).from(resumeContainer).save()
-          .then(() => {
-            downloadBtn.innerHTML = originalContent;
-            downloadBtn.disabled = false;
-          })
-          .catch(err => {
-            console.error('Error generating PDF:', err);
-            alert('Sorry, there was an error generating the PDF. Please try again.');
-            downloadBtn.innerHTML = originalContent;
-            downloadBtn.disabled = false;
-          });
-      }
+        try {
+            await html2pdf().set(opt).from(element).save();
+        } catch (error) {
+            console.error("PDF generation failed:", error);
+            alert("Sorry, there was an error generating the PDF. Please try again.");
+        } finally {
+            btn.innerHTML = origText;
+            btn.disabled = false;
+        }
+    }
     </script>
+    <script src="insane_animations.js"></script>
+    
 </body>
 </html>
